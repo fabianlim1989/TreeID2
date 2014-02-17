@@ -1,12 +1,13 @@
 <html lang="en">
 	<head>
-		<title>
-			TreeID
-		</title>
+		<title>TreeID</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
 		<script src="phonegap.js"></script>
-		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/jquery-1.11.0.min.js"></script>
 		<script src="js/jquery.mobile-1.4.1.min.js"></script>
+		
 	</head>
 	<body>
 		<div id="splash" data-role="page">
@@ -14,36 +15,65 @@
 				<h1>My PGH Parks</h1>
 				<center>TreeID Audio Tour</center>
 			</div>
-			<div id="splashcontent" data-role="content" >
+			<div id="splashcontent" data-role="content">
 				<h3>Choose a park:</h3>
-				<ul data-role="listview">
+				<ul data-role="listview" id="parkList">
+					<!--
 					<li><a href="#schenley" data-transition="slide" >Schenley Park</a></li>
-					<li><a href="frickpark.html">Frick Park</a></li>
+					<li><a href="www.google.com" data-rel="external">Frick Park</a></li>
 					<li><a href="">Point State Park</a></li>
+					-->
 				</ul>
 			</div>
 		</div><!-- splash -->
+		<script type="text/javascript">
+			//alert("message");
+		</script>
+		<script type="text/javascript">
+					alert("b4 getJSON");
+					$.getJSON("./parks.json", function(parks){
+					   	alert("after getJSON");
+						//Start off with an empty list every time to get the latest from server
+						$("#parkList").empty();
 
-		<div id="schenley" data-role="page">
-			<div data-role="header" data-theme="c">
-				<h1>My PGH Parks</h1>
-				<center>Schenley Park</center>
-				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
-			</div>
-			<div data-role="content">
-				<img src="img/SchenleyPark.jpg" class="fullscreen"/>
-				<div id="autoModeContent">
-					<label id="autoModeLabel" for="autoMode">
-						<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
-					</label>
-					<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="c" data-inline="false">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</div>
-				<button type="submit" name="submit" value="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">START</button>
-			</div>
-		</div><!-- schenley -->
+						//add the park items as list
+						$.each(parks, function(i, park){
+							$("#parkList").append(generateParkLink(park));
+						});
 
+					    //refresh the list view to show the latest changes
+					    $("#parkList").listview("refresh");
+					    alert("after refresh");
+					    //creates a park link list item
+						function generateParkLink(park){
+							alert("parkname:"+parkname);
+							return "<li>+"+park.name+"</li>";
+							//debugger;
+							/*return "<li><a href=\"#\""
+							    + "onclick=\"goToParkPage(\""
+							    + park.name
+							    + "\")>"
+							    + park.name
+							    + "</a></li>";
+							    */
+						}
+
+						function goToParkPage(parkName){
+
+							//create the page html template
+							var parkPage = 
+								$("<div data-role='page' data-url=dummyUrl><div data-role='header'><h1>"
+					              + parkName + "</h1></div><div data-role='content'><img border='0' src='" 
+					              + parkName + "' width=204 height=288></img></div><div data-role='footer'><h4>" 
+					              + parkName + "</h4></div></div>");
+
+							//append the new page to the page container
+							parkPage.appendTo( $.mobile.pageContainer );
+
+							//go to the newly created page
+							$.mobile.changePage( parkPage );
+						}
+				    });
+				</script>
 	</body>
 </html>

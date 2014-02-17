@@ -4733,3 +4733,7 @@ img.fullscreen{
 	margin-top: 0;
 	vertical-align: top;
 }
+
+#parkList{
+	height:90%;
+}
