@@ -1,15 +1,49 @@
-<html>
-<body>
+<html lang="en">
+	<head>
+		<title>
+			TreeID
+		</title>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
+		<script src="phonegap.js"></script>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/jquery.mobile-1.4.1.min.js"></script>
+	</head>
+	<body>
+		<div id="splash" data-role="page">
+			<div data-role="header" data-theme="b">
+				<h1>My PGH Parks</h1>
+				<center>TreeID Audio Tour</center>
+			</div>
+			<div id="splashcontent" data-role="content" >
+				<h3>Choose a park:</h3>
+				<ul data-role="listview">
+					<li><a href="#schenley">Schenley Park</a></li>
+					<li><a href="">Frick Park</a></li>
+					<li><a href="">Point State Park</a></li>
+				</ul>
+			</div>
+		</div><!-- splash -->
 
-<div class='header'><h1>Home</h1></div>
-<div class='search-view'>
-<input class='search-key' type="text"/>
-<ul class='employee-list'></ul>
-</div>
+		<div id="schenley" data-role="page">
+			<div data-role="header" data-theme="b">
+				<h1>My PGH Parks</h1>
+				<center>Schenley Park</center>
+				<a href="#splash" data-icon="back">Back</a>
+			</div>
+			<div data-role="content">
+				<img src="img/SchenleyPark.jpg" class="fullscreen"/>
+				<div id="autoModeContent">
+					<label id="autoModeLabel" for="autoMode">
+						<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
+					</label>
+					<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="b" data-inline="false">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</div>
+				<button type="submit" name="submit" value="submit" data-theme="b" class="ui-btn-hidden" aria-disabled="false">START</button>
+			</div>
+		</div><!-- schenley -->
 
-<script src="lib/jquery-1.8.2.min.js"></script>
-<script src="js/storage/memory-store.js"></script>
-<script src="js/main.js"></script>
-
-</body>
+	</body>
 </html>
