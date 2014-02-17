@@ -10,25 +10,25 @@
 	</head>
 	<body>
 		<div id="splash" data-role="page">
-			<div data-role="header" data-theme="b">
+			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
 				<center>TreeID Audio Tour</center>
 			</div>
 			<div id="splashcontent" data-role="content" >
 				<h3>Choose a park:</h3>
 				<ul data-role="listview">
-					<li><a href="#schenley">Schenley Park</a></li>
-					<li><a href="">Frick Park</a></li>
+					<li><a href="#schenley" data-transition="slide" data-direction>Schenley Park</a></li>
+					<li><a href="frickpark.html">Frick Park</a></li>
 					<li><a href="">Point State Park</a></li>
 				</ul>
 			</div>
 		</div><!-- splash -->
 
 		<div id="schenley" data-role="page">
-			<div data-role="header" data-theme="b">
+			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
 				<center>Schenley Park</center>
-				<a href="#splash" data-icon="back">Back</a>
+				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
 			</div>
 			<div data-role="content">
 				<img src="img/SchenleyPark.jpg" class="fullscreen"/>
@@ -36,12 +36,12 @@
 					<label id="autoModeLabel" for="autoMode">
 						<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
 					</label>
-					<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="b" data-inline="false">
+					<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="c" data-inline="false">
 						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select>
 				</div>
-				<button type="submit" name="submit" value="submit" data-theme="b" class="ui-btn-hidden" aria-disabled="false">START</button>
+				<button type="submit" name="submit" value="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">START</button>
 			</div>
 		</div><!-- schenley -->
 
