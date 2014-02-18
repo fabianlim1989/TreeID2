@@ -15,7 +15,7 @@
 	        // device APIs are available
 	        //
 	        function onDeviceReady() {
-	            playAudio('audio/ping.m4a');
+	            playAudio(getAbsolutePath('audio/ping.m4a'));
 	        }
 
 	        // Audio player
@@ -90,7 +90,7 @@
 	            document.getElementById('audio_position').innerHTML = position;
 	        }
 
-	        function getPhoneGapPath(src) {
+	        function getAbsolutePath(src) {
   
 			    var path = window.location.pathname;
 			    path = path.substr( path, path.length - 10 );
@@ -113,9 +113,7 @@
 				</ul>
 			</div>
 
-			<a href="#" class="btn large" onclick="playAudio(getPhoneGapPath('audio/blackberryGentle.mp3'))";>Play MP3 Audio</a>
-			<a href="#" class="btn large" onclick="playAudio('file:///audio/blackberryGentle.ogg')";>Play OGG Audio</a>
-			<a href="#" class="btn large" onclick="playAudio('file:///audio/blackberryGentle.m4a')";>Play M4A Audio</a>
+			<a href="#" class="btn large" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'))";>Play MP3 Audio</a>
 	        <a href="#" class="btn large" onclick="pauseAudio();">Pause Playing Audio</a>
 	        <a href="#" class="btn large" onclick="stopAudio();">Stop Playing Audio</a>
 	        <p id="audio_position"></p>
