@@ -89,6 +89,15 @@
 	        function setAudioPosition(position) {
 	            document.getElementById('audio_position').innerHTML = position;
 	        }
+
+	        function getPhoneGapPath(src) {
+  
+			    var path = window.location.pathname;
+			    path = path.substr( path, path.length - 10 );
+			    return 'file://' + path;
+			    
+			};
+
 		</script>
 	</head>
 	<body>
@@ -104,7 +113,7 @@
 				</ul>
 			</div>
 
-			<a href="#" class="btn large" onclick="playAudio('file:///audio/blackberryGentle.mp3')";>Play MP3 Audio</a>
+			<a href="#" class="btn large" onclick="playAudio(getPhoneGapPath('audio/blackberryGentle.mp3'))";>Play MP3 Audio</a>
 			<a href="#" class="btn large" onclick="playAudio('file:///audio/blackberryGentle.ogg')";>Play OGG Audio</a>
 			<a href="#" class="btn large" onclick="playAudio('file:///audio/blackberryGentle.m4a')";>Play M4A Audio</a>
 	        <a href="#" class="btn large" onclick="pauseAudio();">Pause Playing Audio</a>
