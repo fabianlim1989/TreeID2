@@ -14,17 +14,16 @@
 	        
 	        //helper to get the local filepath
 	        function getAbsolutePath(src) {
-  
 			    var path = window.location.pathname;
 			    path = path.substr( path, path.length - 10 );
 			    return 'file://' + path + src;
-			    
 			}
 
 	        // Audio player
 	        //
 	        var my_media = null;
 	        var mediaTimer = null;
+	        var paused = false;
 
 	        // Stop audio
 	        //
@@ -61,11 +60,11 @@
 	        //
 	        function playAudio(src) {
 	            // Create Media object from src
-	            my_media = new Media(src, onSuccess, onError);
+	            my_media = new Media(src, onSuccess, onError, mediaStatus);
 				alert(src);
-
+				alert(mediaStatus);
 	            // Update my_media position every second
-	            if (mediaTimer == null) {
+	            if (mediaTimer == null && !paused) {
 	                mediaTimer = setInterval(function() {
 	                    // get my_media position
 	                    my_media.getCurrentPosition(
@@ -82,7 +81,8 @@
 	                        }
 	                    );
 	                }, 1000);
-	            } else {
+	            } else (paused){
+	            	paused = false;
 	            	my_media.seekTo(position*1000);
 	            }
 
@@ -96,6 +96,7 @@
 	        function pauseAudio() {
 	            if (my_media) {
 	                my_media.pause();
+	                paused = true;
 	            }
 	        }
 
