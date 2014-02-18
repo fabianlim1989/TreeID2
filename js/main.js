@@ -1,23 +1,31 @@
 var app = {
 
-    findByName: function() {
-        console.log('findByName');
-        this.store.findByName($('.search-key').val(), function(employees) {
-            var l = employees.length;
-            var e;
-            $('.employee-list').empty();
-            for (var i=0; i<l; i++) {
-                e = employees[i];
-                $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
-            }
-        });
-    },
+    renderHomeView: function() {  
+      var today = new Date();  
+      var dateTxt = today.getDate() +   
+      "." + (today.getMonth()+1) +  
+      "." + today.getFullYear();        
+      var data = {  
+      name: "I am the One",   
+      date: dateTxt,  
+      comment: [  
+           { description: "walking with you."  
+           },   
+           { description: "eating together."  
+           },  
+           { description: "driving around town."  
+           },  
+      ] };  
+   $(#splash).html(this.homeTemplate(data));       
+   },
 
-    initialize: function() {
-        this.store = new MemoryStore();
-        $('.search-key').on('keyup', $.proxy(this.findByName, this));
-    }
-
+   initialize: function() {  
+        var self = this;  
+        var source = $("#splash").html();  
+     self.showAlert('This is how its done','Info');  
+     this.homeTemplate = Handlebars.compile(source);  
+     this.renderHomeView();  
+   }  
 };
 
 app.initialize();

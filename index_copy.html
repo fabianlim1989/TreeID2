@@ -16,14 +16,16 @@
 			</div>
 			<div id="splashcontent" data-role="content">
 				<h3>Choose a park:</h3>
-				<script type="text/javascript" src="./data/parks.json">
+				<script type="text/javascript">
+					alert('here');
 					$.getJSON("./data/parks.json", function(parks){
-					   	
+					   	alert('getting json');
 						//Start off with an empty list every time to get the latest from server
 						$("#parkList").empty();
 
 						//add the park items as list
 						$.each(parks, function(i, park){
+							alert(generateParkLink(park));
 							$("#parkList").append(generateParkLink(park));
 						});
 
@@ -33,10 +35,10 @@
 					    //creates a park link list item
 						function generateParkLink(park){
 							//debugger;
-							return "<li><a href=\"#\""
-							    //+ "onclick=\"goToParkPage(\""
-							    //+ park.name
-							    //+ "\")>"
+							return "<li><a href=\"#"
+							  //  + " onclick=\"goToParkPage(\""
+							    + park.name
+							    + "\")>"
 								+ ">"
 							    + park.name
 							    + "</a></li>";
@@ -68,8 +70,8 @@
 				</ul>
 			</div>
 		</div><!-- splash -->
-		<!--
-		<div id="schenley" data-role="page">
+		
+		<div id="Schenley" data-role="page">
 			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
 				<center>Schenley Park</center>
@@ -89,6 +91,6 @@
 				<button type="submit" name="submit" value="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">START</button>
 			</div>
 		</div><!-- schenley -->
-		-->
+		
 	</body>
 </html>

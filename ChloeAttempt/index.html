@@ -1,0 +1,38 @@
+
+<html lang="en">
+	<head>
+		<title>TreeID</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
+	
+
+	</head>
+	<body>
+		<h1>Hello PhoneGap</h1>  
+		<div id="splashpage" data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>TreeID Audio Tour</center>
+			</div>
+			<div id="dyn_content">
+		  	<script id="a-comment" type="text/x-handlebars-template">  
+				<p><b>{{name}}</b> on {{date}}</p>  
+				<ul>  
+				{{#each comment}}  
+					<li>{{description}}  
+				{{/each}}  
+				</ul>  
+			 </script> 
+			 </div> 
+		</div>
+		  
+	</body>
+	
+	<script src="phonegap.js"></script>
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.1.min.js"></script>
+	<script src="js/handlebars-v1.3.0.js"></script>
+	<script src="js/main.js"></script> 
+
+</html>
