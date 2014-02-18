@@ -15,7 +15,7 @@
 	        // device APIs are available
 	        //
 	        function onDeviceReady() {
-	            playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');
+	            playAudio("./audio/ping.mp3");
 	            alert("play");
 	        }
 
@@ -105,10 +105,10 @@
 				</ul>
 			</div>
 
-			<audio controls="none">
-	          Your browser does not support the <code>audio</code> element.
-	          <source src="./audio/ping.mp3" type="audio/wav">
-	        </audio>
+			<a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');">Play Audio</a>
+	        <a href="#" class="btn large" onclick="pauseAudio();">Pause Playing Audio</a>
+	        <a href="#" class="btn large" onclick="stopAudio();">Stop Playing Audio</a>
+	        <p id="audio_position"></p>
 
 		</div><!-- splash -->
 		
