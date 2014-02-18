@@ -15,8 +15,7 @@
 	        // device APIs are available
 	        //
 	        function onDeviceReady() {
-	            playAudio('audio/ping.mp3');
-	            alert("play");
+	            playAudio('audio/ping.m4a');
 	        }
 
 	        // Audio player
@@ -105,7 +104,9 @@
 				</ul>
 			</div>
 
-			<a href="#" class="btn large" onclick="playAudio('./audio/blackberryGentle.ogg')";>Play Audio</a>
+			<a href="#" class="btn large" onclick="playAudio('./audio/blackberryGentle.mp3')";>Play MP3 Audio</a>
+			<a href="#" class="btn large" onclick="playAudio('./audio/blackberryGentle.ogg')";>Play OGG Audio</a>
+			<a href="#" class="btn large" onclick="playAudio('./audio/blackberryGentle.m4a')";>Play M4A Audio</a>
 	        <a href="#" class="btn large" onclick="pauseAudio();">Pause Playing Audio</a>
 	        <a href="#" class="btn large" onclick="stopAudio();">Stop Playing Audio</a>
 	        <p id="audio_position"></p>
