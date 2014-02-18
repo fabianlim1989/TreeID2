@@ -31,6 +31,7 @@
 	        function stopAudio() {
 	            if (my_media) {
 	                my_media.stop();
+	                my_media.release();
 	            }
 	            clearInterval(mediaTimer);
 	            mediaTimer = null;
@@ -47,6 +48,7 @@
 	        function onError(error) {
 	            alert('code: '    + error.code    + '\n' +
 	                  'message: ' + error.message + '\n');
+	            my_media.release();
 	        }
 
 	        // Set audio position
@@ -80,7 +82,9 @@
 	                        }
 	                    );
 	                }, 1000);
-	            } 
+	            } else {
+	            	my_media.seekTo(position*1000);
+	            }
 
 	            // Play audio
 	            my_media.play();
