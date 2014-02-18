@@ -61,8 +61,6 @@
 	            // Create Media object from src
 	            my_media = new Media(src, onSuccess, onError);
 				alert(src);
-	            // Play audio
-	            my_media.play();
 
 	            // Update my_media position every second
 	            if (mediaTimer == null) {
@@ -82,11 +80,11 @@
 	                        }
 	                    );
 	                }, 1000);
-	                 // SeekTo to 10 seconds after 5 seconds
-		            setTimeout(function() {
-		                my_media.seekTo(10000);
-		            }, 5000);
-	            }
+	            } 
+
+	            // Play audio
+	            my_media.play();
+
 	        }
 
 	        // Pause audio
