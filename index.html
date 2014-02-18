@@ -21,12 +21,6 @@
 			    
 			}
 
-	        // device APIs are available
-	        //
-	        function onDeviceReady() {
-	            playAudio(getAbsolutePath('audio/ping.mp3'));
-	        }
-
 	        // Audio player
 	        //
 	        var my_media = null;
@@ -97,6 +91,13 @@
 	        //
 	        function setAudioPosition(position) {
 	            document.getElementById('audio_position').innerHTML = position;
+	        }
+
+	        
+	        // device APIs are available
+	        //
+	        function onDeviceReady() {
+	            playAudio(getAbsolutePath('audio/ping.mp3'));
 	        }
 
 		</script>
