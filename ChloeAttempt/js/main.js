@@ -58,10 +58,13 @@ var app = {
 */
       alert('here');
       
+      /*
       $.getJSON("./data/parks.json",function(data,status,xhr){
         alert('within getJSON');
         alert(data[0].name);
         this.handlerData(data);
+        */
+
         /*
         $.each(data,function(index,element){
           // Generate the HTML for each post
@@ -70,7 +73,9 @@ var app = {
           placeHolder.append(html);
         });
 */
-      });
+      // });
+
+
       $.getJSON ('./data/parks.json', function (json) {
       alert('gotthisjson');
       $.each (json.parks, function (i,TheMovie){
@@ -79,8 +84,9 @@ var app = {
       var src = $('#centerContainer-template').html(),
       template = Handlebars.compile(src),
       data = template(json),
-      html = $('#centerContainer').html(data);
-       
+      html = $('#dyn_content').html(data);
+  
+      $('ul').listview('refresh');
       });
       })
 
@@ -109,7 +115,7 @@ var app = {
    initialize: function() {  
       alert('BeforeInitialize');
         var self = this;  
-        var source = $("#a-comment").html();  
+        var source = $("#centerContainer-template").html();  
      self.showAlert('This is how its done','Info');  
      this.homeTemplate = Handlebars.compile(source);  
      this.renderHomeView();  

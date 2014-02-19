@@ -16,30 +16,27 @@
 				<h1>My PGH Parks</h1>
 				<center>TreeID Audio Tour</center>
 			</div>
-			<div id="centerContainer">
-	<script id="centerContainer-template" type="x-handlebars-template">
-      {{#parks}}
-      	<b>{{name}}</b>
-      {{/parks}}
-    </script>
-    </div>
 
 			<div id="splashcontent" data-role="content">
+
 				<h3>Choose a park:</h3>
 				
 				<ul id="dyn_content" data-role="listview">
 				
-			  	  	<script id="a-comment" type="text/x-handlebars-template">  
-						{{#each thing}}
-						<li><a href=#{{toLowerCase this.name}} data-transition="slide">{{this.name}}</a></li>
-						{{/each}}
-					 </script> 
+					
+					<script id="centerContainer-template" type="x-handlebars-template">
+				      {{#parks}}
+				      	<li><a href=#{{name}}>{{name}}</a></li>
+				      {{/parks}}
+				    </script>
+				    
+
 				 
 				 </ul>
 			</div>
 		</div>
 
-		<div id="schenley" data-role="page">
+		<div id="Schenley" data-role="page">
 		LALA
 		</div>
 	</body>
