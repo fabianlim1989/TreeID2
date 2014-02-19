@@ -15,16 +15,19 @@
 				<h1>My PGH Parks</h1>
 				<center>TreeID Audio Tour</center>
 			</div>
-			<div id="dyn_content">
-		  	<script id="a-comment" type="text/x-handlebars-template">  
-				<p><b>{{name}}</b> on {{date}}</p>  
-				<ul>  
-				{{#each comment}}  
-					<li>{{description}}  
-				{{/each}}  
-				</ul>  
-			 </script> 
+			<ul data-role="listview" id="parkList">
+			<div id="dyn_content" data-role="content">
+		  		 
+			  	<script id="a-comment" type="text/x-handlebars-template">  
+					
+					<!--<li><p><b>{{name}}</b> of id {{id}} on {{imageURL}}</p>  </li> -->
+					
+					<li><a href=#{{toLowerCase name}}>{{name}}</a></li>
+
+				 </script> 
+			 	
 			 </div> 
+			 </ul>
 		</div>
 		  
 	</body>
@@ -33,6 +36,7 @@
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/jquery.mobile-1.4.1.min.js"></script>
 	<script src="js/handlebars-v1.3.0.js"></script>
+	<script src="js/custom.js"></script>
 	<script src="js/main.js"></script> 
 
 </html>
