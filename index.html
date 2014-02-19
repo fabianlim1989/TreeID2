@@ -59,9 +59,9 @@
 	        //
 	        function playAudio(src) {
 	            // Create Media object from src
-	            my_media = new Media(src, onSuccess, onError);
+	            my_media = new Media(src, onSuccess, onError, mediaStatus);
 				alert(src);
-				//alert(mediaStatus);
+				alert("onPlay"+mediaStatus);
 
 	            // Play audio
 	            my_media.play();
@@ -92,6 +92,7 @@
 	        function pauseAudio() {
 	            if (my_media) {
 	                my_media.pause();
+	                alert("onPasued:"+mediaStatus);
 	            }
 	        }
 
