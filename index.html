@@ -49,10 +49,6 @@
 	            //my_media.release();
 	        }
 
-	        function onStatus(mediaStatus){
-	        	alert("onPlay"+mediaStatus);
-	        }
-
 	        // Set audio position
 	        //
 	        function setAudioPosition(position) {
@@ -63,7 +59,7 @@
 	        //
 	        function playAudio(src) {
 	            // Create Media object from src
-	            my_media = new Media(src, onSuccess, onError, onStatus);
+	            my_media = new Media(src, onSuccess, onError);
 				alert(src);
 
 	            // Play audio
@@ -87,11 +83,6 @@
 	                        }
 	                    );
 	                }, 1000);
-	            }
-
-	            // Play audio
-	            my_media.play();
-
 	            }
 	        }
 
