@@ -24,32 +24,6 @@
 	        var my_media = null;
 	        var mediaTimer = null;
 
-	        // Stop audio
-	        //
-	        function stopAudio() {
-	            if (my_media) {
-	                my_media.stop();
-	                //my_media.release();
-	            }
-	            clearInterval(mediaTimer);
-	            mediaTimer = null;
-	        }
-
-	        // onSuccess Callback
-	        //
-	        function onSuccess() {
-	            alert("onSuccess");
-	            console.log("playAudio():Audio Success");
-	        }
-
-	        // onError Callback
-	        //
-	        function onError(error) {
-	            alert('code: '    + error.code    + '\n' +
-	                  'message: ' + error.message + '\n');
-	            //my_media.release();
-	        }
-
 	        // Set audio position
 	        //
 	        function setAudioPosition(position) {
@@ -103,7 +77,7 @@
 	            if (my_media) {
 	                my_media.stop();
 	                my_media.release();
-	                my_media = null;
+            		my_media = null;
 	            }
 	            clearInterval(mediaTimer);
 	            mediaTimer = null;
@@ -113,6 +87,10 @@
 	        //
 	        function onSuccess() {
 	        	alert("onSuccess");
+	        	if(my_media){
+	        		my_media.release();
+            		my_media = null;
+	        	}
 	            console.log("playAudio():Audio Success");
 	        }
 
@@ -123,6 +101,7 @@
 	                  'message: ' + error.message + '\n');
 	            if (my_media) {
 	            	my_media.release();
+	            	my_media = null;
 	            }
 	        }
 
