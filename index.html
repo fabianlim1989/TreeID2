@@ -64,7 +64,7 @@
 				alert(src);
 				alert(mediaStatus);
 	            // Update my_media position every second
-	            if (mediaTimer == null && !paused) {
+	            if (mediaTimer == null) {
 	                mediaTimer = setInterval(function() {
 	                    // get my_media position
 	                    my_media.getCurrentPosition(
@@ -81,9 +81,6 @@
 	                        }
 	                    );
 	                }, 1000);
-	            } else (paused){
-	            	paused = false;
-	            	my_media.seekTo(position*1000);
 	            }
 
 	            // Play audio
