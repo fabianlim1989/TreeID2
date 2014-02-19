@@ -38,8 +38,8 @@
 	        // onSuccess Callback
 	        //
 	        function onSuccess() {
-	            console.log("playAudio():Audio Success");
 	            alert("onSuccess");
+	            console.log("playAudio():Audio Success");
 	        }
 
 	        // onError Callback
@@ -60,8 +60,10 @@
 	        //
 	        function playAudio(src) {
 	            // Create Media object from src
-	            my_media = new Media(src, onSuccess, onError);
-				alert(src);
+	            if(my_media = null){
+	            	my_media = new Media(src, onSuccess, onError);
+					//alert(src);
+	            }
 
 	            // Play audio
 	            my_media.play();
@@ -101,6 +103,7 @@
 	            if (my_media) {
 	                my_media.stop();
 	                my_media.release();
+	                my_media = null;
 	            }
 	            clearInterval(mediaTimer);
 	            mediaTimer = null;
