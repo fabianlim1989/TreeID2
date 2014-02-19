@@ -59,9 +59,9 @@
 	        //
 	        function playAudio(src) {
 	            // Create Media object from src
-	            my_media = new Media(src, onSuccess, onError, mediaStatus);
+	            my_media = new Media(src, onSuccess, onError);
 				alert(src);
-				alert(mediaStatus);
+				//alert(mediaStatus);
 
 	            // Play audio
 	            my_media.play();
