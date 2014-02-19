@@ -1,208 +1,219 @@
 <html lang="en">
-	<head>
-		<title>TreeID</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
-		<script src="phonegap.js"></script>
-		<script src="js/jquery-1.11.0.min.js"></script>
-		<script src="js/jquery.mobile-1.4.1.min.js"></script>
-		<script type="text/javascript">
-			// Wait for device API libraries to load
-	        //
-	        document.addEventListener("deviceready", onDeviceReady, false);
-	        
-	        //helper to get the local filepath
-	        function getAbsolutePath(src) {
-			    var path = window.location.pathname;
-			    path = path.substr( path, path.length - 10 );
-			    return 'file://' + path + src;
-			}
+  <head>
+    <title>TreeID</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
+    <script src="phonegap.js"></script>
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery.mobile-1.4.1.min.js"></script>
+    <script type="text/javascript">
+      // Wait for device API libraries to load
+      //
+      document.addEventListener("deviceready", onDeviceReady, false);
+      
+      //helper to get the local filepath
+      function getAbsolutePath(src) {
+        var path = window.location.pathname;
+        path = path.substr( path, path.length - 10 );
+        return 'file://' + path + src;
+      }
 
-	        // Audio player
-	        //
-	        var my_media = null;
-	        var mediaTimer = null;
+      // Audio player
+      //
+      var my_media = null;
+      var mediaTimer = null;
 
-	        // Set audio position
-	        //
-	        function setAudioPosition(position) {
-	            document.getElementById('audio_position').innerHTML = position;
-	        }
+      //change only this var to toggle debug mode
+      //
+      var debugMode = false;
 
-	        // Play audio
-	        //
-	        function playAudio(src) {
-	            // Create Media object from src
-	            if(my_media == null){
-	            	my_media = new Media(src, onSuccess, onError);
-					//alert(src);
-	            }
+      // Set audio position
+      //
+      function setAudioPosition(position) {
+        document.getElementById('audio_position').innerHTML = position;
+      }
 
-	            // Play audio
-	            my_media.play();
+      // Play audio
+      //
+      function playAudio(src) {
+        // Create Media object from src
+        if(my_media == null){
+          my_media = new Media(src, onSuccess, onError);
+          if(debugMode){
+            alert("src: "+src);
+          }
+        } 
 
-	            // Update my_media position every second
-	            if (mediaTimer == null) {
-	                mediaTimer = setInterval(function() {
-	                    // get my_media position
-	                    my_media.getCurrentPosition(
-	                        // success callback
-	                        function(position) {
-	                            if (position > -1) {
-	                                setAudioPosition((position) + " sec");
-	                            }
-	                        },
-	                        // error callback
-	                        function(e) {
-	                            console.log("Error getting pos=" + e);
-	                            setAudioPosition("Error: " + e);
-	                        }
-	                    );
-	                }, 1000);
-	            }
-	        }
+          // Play audio
+          my_media.play();
 
-	        // Pause audio
-	        //
-	        function pauseAudio() {
-	            if (my_media) {
-	                my_media.pause();
-	            }
-	        }
+          // Update my_media position every second
+          if (mediaTimer == null) {
+            mediaTimer = setInterval(function() {
+              // get my_media position
+              my_media.getCurrentPosition(
+                // success callback
+                function(position) {
+                  if (position > -1) {
+                    setAudioPosition((position) + " sec");
+                  }
+                },
+                // error callback
+                function(e) {
+                  console.log("Error getting pos=" + e);
+                  setAudioPosition("Error: " + e);
+                }
+              );
+            }, 1000);
+          }
+      }
 
-	        // Stop audio
-	        //
-	        function stopAudio() {
-	            if (my_media) {
-	                my_media.stop();
-	                my_media.release();
-            		my_media = null;
-	            }
-	            clearInterval(mediaTimer);
-	            mediaTimer = null;
-	        }
+      // Pause audio
+      //
+      function pauseAudio() {
+        if (my_media) {
+          my_media.pause();
+        }
+        if(debugMode){
+          alert("audioPaused");
+        }
+      }
 
-	        // onSuccess Callback
-	        //
-	        function onSuccess() {
-	        	alert("onSuccess");
-	        	if(my_media){
-	        		my_media.release();
-            		my_media = null;
-	        	}
-	            console.log("playAudio():Audio Success");
-	        }
+      // Stop audio
+      //
+      function stopAudio() {
+        if (my_media) {
+          my_media.stop();
+          my_media.release();
+          my_media = null;
+        }
+        clearInterval(mediaTimer);
+        mediaTimer = null;
+      }
 
-	        // onError Callback
-	        //
-	        function onError(error) {
-	            alert('code: '    + error.code    + '\n' +
-	                  'message: ' + error.message + '\n');
-	            if (my_media) {
-	            	my_media.release();
-	            	my_media = null;
-	            }
-	        }
+      // onSuccess Callback
+      //
+      function onSuccess() {
+        if(my_media){
+          my_media.release();
+          my_media = null;
+        }
+        console.log("playAudio():Audio Success");
+        if(debugMode){
+          alert("Success & released");
+        }
+      }
 
-	        // Set audio position
-	        //
-	        function setAudioPosition(position) {
-	            document.getElementById('audio_position').innerHTML = position;
-	        }
+      // onError Callback
+      //
+      function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+        if (my_media) {
+          my_media.release();
+          my_media = null;
+        }
+      }
 
-	        
-	        // device APIs are available
-	        //
-	        function onDeviceReady() {
-	            playAudio(getAbsolutePath('audio/ping.mp3'));
-	        }
+      // Set audio position
+      //
+      function setAudioPosition(position) {
+        document.getElementById('audio_position').innerHTML = position;
+      }
 
-		</script>
-	</head>
-	<body>
-		<div id="splash" data-role="page">
-			<div data-role="header" data-theme="c">
-				<h1>My PGH Parks</h1>
-				<center>TreeID Audio Tour</center>
-			</div>
-			<div id="splashcontent" data-role="content">
-				<h3>Choose a park:</h3>
-				<ul data-role="listview" id="parkList">
+      
+      // device APIs are available
+      //
+      function onDeviceReady() {
+        playAudio(getAbsolutePath('audio/ping.mp3'));
+      }
 
-				</ul>
-			</div>
+    </script>
+  </head>
+  <body>
+    <div id="splash" data-role="page">
+      <div data-role="header" data-theme="c">
+        <h1>My PGH Parks</h1>
+        <center>TreeID Audio Tour</center>
+      </div>
+      <div id="splashcontent" data-role="content">
+        <h3>Choose a park:</h3>
+        <ul data-role="listview" id="parkList">
 
-			<a href="#" class="btn large" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'))";>Play MP3 Audio</a>
-	        <a href="#" class="btn large" onclick="pauseAudio();">Pause Playing Audio</a>
-	        <a href="#" class="btn large" onclick="stopAudio();">Stop Playing Audio</a>
-	        <p id="audio_position"></p>
+        </ul>
+      </div>
 
-		</div><!-- splash -->
-		
+        <a href="#" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'));">Play MP3 Audio</a>
+        <a href="#" onclick="pauseAudio();">Pause Playing Audio</a>
+        <a href="#" onclick="stopAudio();">Stop Playing Audio</a>
+        <p id="audio_position"></p>
 
-		
-		<script type="text/javascript">
-			$.getJSON("./data/parks.json", function(parks){
-			   	//alert("parks:"+parks[0].id);
-				//Start off with an empty list every time to get the latest from server
-				$("#parkList").empty();
+    </div><!-- splash -->
+    
 
-				//add the park items as list
-				$.each(parks, function(i, park){
-					//alert("park:"+park.name);
-					var parkName = park.name;
-					var lowerCaseTrimParkName = parkName.toLowerCase().replace(/\s/g, '');
-					var linkToAppend = "<li><a href=\"#"
-						+ lowerCaseTrimParkName
-						+ "\" data-transition=\"slide\">"
-						+ parkName
-						+ " Park</a></li>";
-					//alert("linkToAppend:" + linkToAppend);
-					$("#parkList").append(linkToAppend);
-				});
+    
+    <script type="text/javascript">
+      $.getJSON("./data/parks.json", function(parks){
+          //alert("parks:"+parks[0].id);
+        //Start off with an empty list every time to get the latest from server
+        $("#parkList").empty();
 
-			    //refresh the list view to show the latest changes
-			    $("#parkList").listview("refresh");
-			    
-			    //creates a park link list item
-				/*
-				function generateParkLink(park){
-					alert("parkname:"+park.name);
-					return 
-						  "<li><a href=\"#"
-						+ park.name
-						+ "\" data-transition=\"slide\">"
-						+ park.name
-						+ "</a></li>";
-					//debugger;
-					return "<li><a href=\"#\""
-					    + "onclick=\"goToParkPage(\""
-					    + park.name
-					    + "\")>"
-					    + park.name
-					    + "</a></li>";
-					    
-				}
-				*/
+        //add the park items as list
+        $.each(parks, function(i, park){
+          //alert("park:"+park.name);
+          var parkName = park.name;
+          var lowerCaseTrimParkName = parkName.toLowerCase().replace(/\s/g, '');
+          var linkToAppend = "<li><a href=\"#"
+            + lowerCaseTrimParkName
+            + "\" data-transition=\"slide\">"
+            + parkName
+            + " Park</a></li>";
+          //alert("linkToAppend:" + linkToAppend);
+          $("#parkList").append(linkToAppend);
+        });
 
-				function goToParkPage(parkName){
+          //refresh the list view to show the latest changes
+          $("#parkList").listview("refresh");
+          
+          //creates a park link list item
+        /*
+        function generateParkLink(park){
+          alert("parkname:"+park.name);
+          return 
+              "<li><a href=\"#"
+            + park.name
+            + "\" data-transition=\"slide\">"
+            + park.name
+            + "</a></li>";
+          //debugger;
+          return "<li><a href=\"#\""
+              + "onclick=\"goToParkPage(\""
+              + park.name
+              + "\")>"
+              + park.name
+              + "</a></li>";
+              
+        }
+        */
 
-					//create the page html template
-					var parkPage = 
-						$("<div data-role='page' data-url=dummyUrl><div data-role='header'><h1>"
-			              + parkName + "</h1></div><div data-role='content'><img border='0' src='" 
-			              + parkName + "' width=204 height=288></img></div><div data-role='footer'><h4>" 
-			              + parkName + "</h4></div></div>");
+        function goToParkPage(parkName){
 
-					//append the new page to the page container
-					parkPage.appendTo( $.mobile.pageContainer );
+          //create the page html template
+          var parkPage = 
+            $("<div data-role='page' data-url=dummyUrl><div data-role='header'><h1>"
+                    + parkName + "</h1></div><div data-role='content'><img border='0' src='" 
+                    + parkName + "' width=204 height=288></img></div><div data-role='footer'><h4>" 
+                    + parkName + "</h4></div></div>");
 
-					//go to the newly created page
-					$.mobile.changePage( parkPage );
-				}
+          //append the new page to the page container
+          parkPage.appendTo( $.mobile.pageContainer );
 
-		    });
-		</script>
-	</body>
+          //go to the newly created page
+          $.mobile.changePage( parkPage );
+        }
+
+        });
+    </script>
+  </body>
 </html>
