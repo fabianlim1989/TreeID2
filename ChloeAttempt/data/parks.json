@@ -1,4 +1,4 @@
-[
+{"parks" : [
     {
         "id" : "1", 
         "name" : "Schenley", 
@@ -18,3 +18,4 @@
         "imageURL" : "img/PointStatePark.jpg"
     }
 ]
+}

@@ -1,18 +1,26 @@
 var app = {  
       showAlert: function (message, title) {  
-    if (navigator.notification) {  
-     navigator.notification.alert(message, null, title, 'OK');  
-    } else {  
-     alert(title ? (title + ": " + message) : message);  
-    }  
+        if (navigator.notification) {  
+         navigator.notification.alert(message, null, title, 'OK');  
+        } else {  
+         alert(title ? (title + ": " + message) : message);  
+        }  
       },
 
+       handlerData:function(resJSON){
+          alert('inhandlerData');
+            var templateSource   = $("#a-comment").html(),
+ 
+                template = Handlebars.compile(templateSource),
+ 
+                studentHTML = template(resJSON);
+ 
+           $('#dyn_content').html(studentHTML);
+             
+        },
+
      renderHomeView: function() {  
-      var today = new Date();  
-      var dateTxt = today.getDate() +   
-      "." + (today.getMonth()+1) +  
-      "." + today.getFullYear();        
-      alert(dateTxt);
+
       alert('firstreached');
       /*
       var data = JSON.parse('data/parks.json');
@@ -32,24 +40,49 @@ var app = {
         }
       }));*/
 
-      var raw_template = $('#a-comment').html();
+      //var raw_template = $('#a-comment').html();
       // Compile that into an handlebars template
-      var template = Handlebars.compile(raw_template);
+      //var template = Handlebars.compile(raw_template);
       // Retrieve the placeHolder where the Posts will be displayed 
-      var placeHolder = $("#dyn_content");
+      //var placeHolder = $("#a-comment");
       // Fetch all Blog Posts data from server in JSON
       
       alert('after placeholder');
-
+      /*
+      $.ajax({
+                url:"./data/parks.json",
+                method:'get',
+                success:this.handlerData
+ 
+       })
+*/
+      alert('here');
+      
       $.getJSON("./data/parks.json",function(data,status,xhr){
+        alert('within getJSON');
         alert(data[0].name);
+        this.handlerData(data);
+        /*
         $.each(data,function(index,element){
           // Generate the HTML for each post
           var html = template(element);
           // Render the posts into the page
           placeHolder.append(html);
         });
+*/
       });
+      $.getJSON ('./data/parks.json', function (json) {
+      alert('gotthisjson');
+      $.each (json.parks, function (i,TheMovie){
+       alert('eaching' + i + json.parks[i].name);
+      //handlebars
+      var src = $('#centerContainer-template').html(),
+      template = Handlebars.compile(src),
+      data = template(json),
+      html = $('#centerContainer').html(data);
+       
+      });
+      })
 
         /*
       var data2 = {  
@@ -70,7 +103,7 @@ var app = {
       alert(obj.name);
 */
 
-   $('#dyn_content').html(this.homeTemplate(data));       
+   //$('#dyn_content').html(this.homeTemplate(data));       
    },  
    
    initialize: function() {  

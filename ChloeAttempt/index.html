@@ -9,20 +9,30 @@
 
 	</head>
 	<body>
+	
+
 		<div id="splashpage" data-role="page">
 			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
 				<center>TreeID Audio Tour</center>
 			</div>
+			<div id="centerContainer">
+	<script id="centerContainer-template" type="x-handlebars-template">
+      {{#parks}}
+      	<b>{{name}}</b>
+      {{/parks}}
+    </script>
+    </div>
+
 			<div id="splashcontent" data-role="content">
 				<h3>Choose a park:</h3>
 				
 				<ul id="dyn_content" data-role="listview">
 				
 			  	  	<script id="a-comment" type="text/x-handlebars-template">  
-						
-						<li><a href=#{{toLowerCase name}} data-transition="slide">{{name}}</a></li>
-
+						{{#each thing}}
+						<li><a href=#{{toLowerCase this.name}} data-transition="slide">{{this.name}}</a></li>
+						{{/each}}
 					 </script> 
 				 
 				 </ul>
