@@ -10,6 +10,12 @@ Handlebars.registerHelper('retrieve', function(num) {
     });
 });
 
+function goToNext(){
+   $.getJSON ('./data/parks.json', function (json) {
+     alert(json.parks[0].name);
+   });
+}
+
 function renderschenley()
 {
 	alert("Hello World!");
