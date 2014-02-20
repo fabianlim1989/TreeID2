@@ -1,112 +1,68 @@
+
 <html lang="en">
-  <head>
-    <title>TreeID</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
-    <script src="phonegap.js"></script>
-    <script src="js/audioCtrl.js"></script>
-    <script src="js/gps.js"></script>
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/jquery.mobile-1.4.1.min.js"></script>
-    <script type="text/javascript">
+	<head>
+		<title>TreeID</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
+		<script src="phonegap.js"></script>
+		<script src="js/jquery-1.11.0.min.js"></script>
+		<script src="js/jquery.mobile-1.4.1.min.js"></script>
+		<script src="js/handlebars-v1.3.0.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js/main.js"></script> 
 
-		  // device APIs are available, however, needs to be placed further behind to allow API to run first
-		  //
-		  function onDeviceReady() {
-		    //alert("onDeviceReady");
-		    playAudio(getAbsolutePath('audio/bird.mp3'));
-		  }
+	</head>
+	<body>
+		<script id="allparks-template" type="x-handlebars-template">	
+		<div id="splashpage" data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>TreeID Audio Tour</center>
+			</div>
 
-      // Wait for device API libraries to load
-      //
-      document.addEventListener("deviceready", onDeviceReady, false);
-    </script>
-  </head>
-  <body>
-    <div id="splash" data-role="page">
-      <div data-role="header" data-theme="c">
-        <h1>My PGH Parks</h1>
-        <center>TreeID Audio Tour</center>
-      </div>
-      <div id="splashcontent" data-role="content">
-        <h3>Choose a park:</h3>
-        <ul data-role="listview" id="parkList">
+			<div id="splashcontent" data-role="content">
+				<h3>Choose a park:</h3>
+				<ul id="dyn_content" data-role="listview">
+					<!-- dynamically update	park list	 -->
 
-        </ul>
-      </div>
+					  {{#parks}}
+				      	<li><a href=#{{toLowerCase name}} data-transition="slide">{{name}}</a></li>
+				      {{/parks}}
+				    
+				 </ul>
+			</div>
+		</div>
 
-        <a href="#" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'));">Play MP3 Audio</a>
-        <a href="#" onclick="pauseAudio();">Pause Playing Audio</a>
-        <a href="#" onclick="stopAudio();">Stop Playing Audio</a>
-        <a href="#" onclick="getGPS();">Get GPS</a>
-        <p id="audio_position"></p>
-        <p id="geolocation">Finding geolocation...</p>
-    </div><!-- splash -->
-    
 
-    
-    <script type="text/javascript">
-      $.getJSON("./data/parks.json", function(parks){
-          //alert("parks:"+parks[0].id);
-        //Start off with an empty list every time to get the latest from server
-        $("#parkList").empty();
+		{{#parks}}
+		<div id={{toLowerCase name}} data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>{{name}} Park</center>
+				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back
+				</a>
+			</div>
+			<div data-role="content">
+				<img src={{imageURL}} class="fullscreen"/>
+				<div id="autoModeContent">
+					<label id="autoModeLabel" for="autoMode">
+						<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
+					</label>
+					<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="c" data-inline="false">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</div>
+				<button type="submit" name="submit" value="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false" onClick="goToNext();">START</button>
+			</div>
+		</div> 
+		{{/parks}}
+		
+		</script>
 
-        //add the park items as list
-        $.each(parks, function(i, park){
-          //alert("park:"+park.name);
-          var parkName = park.name;
-          var lowerCaseTrimParkName = parkName.toLowerCase().replace(/\s/g, '');
-          var linkToAppend = "<li><a href=\"#"
-            + lowerCaseTrimParkName
-            + "\" data-transition=\"slide\">"
-            + parkName
-            + " Park</a></li>";
-          //alert("linkToAppend:" + linkToAppend);
-          $("#parkList").append(linkToAppend);
-        });
+	</body>
+	
 
-          //refresh the list view to show the latest changes
-          $("#parkList").listview("refresh");
-          
-          //creates a park link list item
-        /*
-        function generateParkLink(park){
-          alert("parkname:"+park.name);
-          return 
-              "<li><a href=\"#"
-            + park.name
-            + "\" data-transition=\"slide\">"
-            + park.name
-            + "</a></li>";
-          //debugger;
-          return "<li><a href=\"#\""
-              + "onclick=\"goToParkPage(\""
-              + park.name
-              + "\")>"
-              + park.name
-              + "</a></li>";
-              
-        }
-        */
 
-        function goToParkPage(parkName){
-
-          //create the page html template
-          var parkPage = 
-            $("<div data-role='page' data-url=dummyUrl><div data-role='header'><h1>"
-                    + parkName + "</h1></div><div data-role='content'><img border='0' src='" 
-                    + parkName + "' width=204 height=288></img></div><div data-role='footer'><h4>" 
-                    + parkName + "</h4></div></div>");
-
-          //append the new page to the page container
-          parkPage.appendTo( $.mobile.pageContainer );
-
-          //go to the newly created page
-          $.mobile.changePage( parkPage );
-        }
-
-        });
-    </script>
-  </body>
 </html>
