@@ -7,18 +7,9 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
     <script src="phonegap.js"></script>
-    <script type="text/javascript" src="js/audioCtrl.js"></script>
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/jquery.mobile-1.4.1.min.js"></script>
-    <script type="text/javascript">
-
-		  // device APIs are available, however, needs to be placed further behind to allow API to run first
-		  //
-		  function onDeviceReady() {
-		    alert("onDeviceReady");
-		    playAudio(getAbsolutePath('audio/bird.mp3'));
-		  }
-
+    <script type="text/javascript" src="js/audioCtrl.js">
       // Wait for device API libraries to load
       //
       document.addEventListener("deviceready", onDeviceReady, false);
@@ -48,6 +39,7 @@
 		<script src="js/custom.js"></script>
 		<script src="js/main.js"></script> 
 
+<<<<<<< HEAD
 	</head>
 	<body>
 		<script id="allparks-template" type="x-handlebars-template">	
@@ -56,6 +48,15 @@
 				<h1>My PGH Parks</h1>
 				<center>TreeID Audio Tour</center>
 			</div>
+=======
+        <a href="#" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'));">Play MP3 Audio</a>
+        <a href="#" onclick="pauseAudio();">Pause Playing Audio</a>
+        <a href="#" onclick="stopAudio();">Stop Playing Audio</a>
+        <p id="audio_position"></p>
+
+    </div><!-- splash -->
+    
+>>>>>>> parent of 59eed6e... added GPS
 
 			<div id="splashcontent" data-role="content">
 				<h3>Choose a park:</h3>

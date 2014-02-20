@@ -25,7 +25,7 @@
   function playAudio(src) {
     // Create Media object from src
     if(my_media == null){
-      my_media = new Media(src, onMediaSuccess, onMediaError);
+      my_media = new Media(src, onSuccess, onError);
       if(debugMode){
         alert("src: "+src);
       }
@@ -80,7 +80,7 @@
 
   // onSuccess Callback
   //
-  function onMediaSuccess() {
+  function onSuccess() {
     if(my_media){
       my_media.release();
       my_media = null;
@@ -93,7 +93,7 @@
 
   // onError Callback
   //
-  function onMediaError(error) {
+  function onError(error) {
     alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
     if (my_media) {
