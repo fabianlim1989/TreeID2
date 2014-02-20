@@ -7,9 +7,24 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
     <script src="phonegap.js"></script>
+<<<<<<< HEAD
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/jquery.mobile-1.4.1.min.js"></script>
     <script type="text/javascript" src="js/audioCtrl.js">
+=======
+    <script type="text/javascript" src="js/audioCtrl.js"></script>
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery.mobile-1.4.1.min.js"></script>
+    <script type="text/javascript">
+
+		  // device APIs are available, however, needs to be placed further behind to allow API to run first
+		  //
+		  function onDeviceReady() {
+		    alert("onDeviceReady");
+		    playAudio(getAbsolutePath('audio/bird.mp3'));
+		  }
+
+>>>>>>> parent of beb1787... added js src link
       // Wait for device API libraries to load
       //
       document.addEventListener("deviceready", onDeviceReady, false);
