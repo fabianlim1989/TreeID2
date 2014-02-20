@@ -29,10 +29,9 @@ var app = {
       html = $('body').html(data);
 
       //ensures that the elements li in the unordered list get jquery formatting
-      $('ul').listview('refresh');
       
       $.each(json.parks, function(i) {
-          // alert(json.parks[i].name);
+          alert(json.parks[i].name);
           // alert('good');
           
           //sets the pagename correctly (trimming and removing spaces)
@@ -42,17 +41,28 @@ var app = {
           //$('#'+pagename).trigger('pagecreate')
           //doesn't seem necessary after all
       }); 
+
+      
+      $.mobile.changePage('#splashpage', {
+          
+      });
+
     })    
 
 
   },   
 
   initialize: function() {  
-    //alert('BeforeInitialize');
+    alert('BeforeInitialize');
     var self = this;  
     this.renderSplashView();  
 
   }  
 };
 
-app.initialize();  
+$(document).on("mobileinit",function() {
+    $.mobile.autoInitializePage = false;
+}); 
+
+document.addEventListener("deviceready", app.initialize(), false);
+// app.initialize();  
