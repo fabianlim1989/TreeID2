@@ -11,7 +11,7 @@ var app = {
   renderSplashView: function() {  
 
     //alert('after placeholder');
-
+    
     $.getJSON ('./data/parks.json', function (json) {
       
       // alert('gotthisjson');
@@ -27,29 +27,13 @@ var app = {
 
       //'unloads' all this stuff into the <body> tag
       html = $('body').html(data);
-
-      //ensures that the elements li in the unordered list get jquery formatting
-      
-      // $.each(json.parks, function(i) {
-      //     alert(json.parks[i].name);
-      //     // alert('good');
-          
-      //     //sets the pagename correctly (trimming and removing spaces)
-      //     var pagename = json.parks[i].name.toLowerCase().replace(/\s/g, '');
-          
-      //     //creates a new page for each park
-      //     //$('#'+pagename).trigger('pagecreate')
-      //     //doesn't seem necessary after all
-      // }); 
-
       
       $.mobile.changePage('#splash', {
           
       });
 
     })    
-
-
+    
   },   
 
   initialize: function() {  

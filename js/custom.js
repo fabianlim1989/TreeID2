@@ -1,4 +1,5 @@
 //Handlebar helper classes
+var park = 'SLA';
 
 Handlebars.registerHelper('toLowerCase', function(str) {
   return str.toLowerCase().replace(/\s/g, '');
@@ -11,9 +12,23 @@ Handlebars.registerHelper('retrieve', function(num) {
 });
 
 function goToNext(){
-   $.getJSON ('./data/parks.json', function (json) {
-     alert(json.parks[0].name);
-   });
+   
+   $.mobile.changePage('#treehome', {
+          
+    });
+}
+
+function goBack() {
+    //alert(park);
+    $.mobile.changePage('#'+park, {
+          
+    });
+}
+
+function setPark(parkName){
+  park = parkName;
+  // alert(parkName);
+
 }
 
 function renderschenley()
