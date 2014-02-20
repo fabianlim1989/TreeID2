@@ -9,7 +9,7 @@
 
 	</head>
 	<body>
-	
+		<script id="allparks-template" type="x-handlebars-template">	
 		<div id="splashpage" data-role="page">
 			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
@@ -20,33 +20,28 @@
 				<h3>Choose a park:</h3>
 				<ul id="dyn_content" data-role="listview">
 					<!-- dynamically update	park list	 -->
-					<script id="centerContainer-template" type="x-handlebars-template">
-				      {{#parks}}
+
+					  {{#parks}}
 				      	<li><a href=#{{toLowerCase name}}>{{name}}</a></li>
 				      {{/parks}}
-				    </script>
-				
+				    
 				 </ul>
 			</div>
 		</div>
 
-		<div id="otherpages">
-		<script id="allparks-template" type="x-handlebars-template">
-			{{#parks}}
-			<div id={{toLowerCase name}} data-role="page">
+
+		{{#parks}}
+		{{name}}
+		<div id={{toLowerCase name}} data-role="page">
 			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
 				<center>Schenley Park</center>
 				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
 			</div>
-			
-			PINK.
-			PINK.
-			PINK.
-			</div>
-			{{/parks}}
+		</div> 
+		{{/parks}}
+		
 		</script>
-		</div>
 		<!--
 		<div id="schenley" data-role="page">
 			<div data-role="header" data-theme="c">

@@ -1,0 +1,21 @@
+{"parks" : [
+    {
+        "id" : "1", 
+        "name" : "Schenley", 
+        "GPS" : "41,71", 
+        "imageURL" : "img/SchenleyPark.jpg"
+    },
+    {
+        "id" : "2", 
+        "name" : "Frick", 
+        "GPS" : "42,72", 
+        "imageURL" : "img/FrickPark.jpg"
+    },
+    {
+        "id" : "3", 
+        "name" : "Point State", 
+        "GPS" : "43,73", 
+        "imageURL" : "img/PointStatePark.jpg"
+    }
+]
+}
