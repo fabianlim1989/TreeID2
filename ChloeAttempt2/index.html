@@ -31,26 +31,15 @@
 
 
 		{{#parks}}
-		{{name}}
 		<div id={{toLowerCase name}} data-role="page">
 			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
-				<center>Schenley Park</center>
-				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
-			</div>
-		</div> 
-		{{/parks}}
-		
-		</script>
-		<!--
-		<div id="schenley" data-role="page">
-			<div data-role="header" data-theme="c">
-				<h1>My PGH Parks</h1>
-				<center>Schenley Park</center>
-				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back</a>
+				<center>{{name}} Park</center>
+				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back
+				</a>
 			</div>
 			<div data-role="content">
-				<img src="img/SchenleyPark.jpg" class="fullscreen"/>
+				<img src={{imageURL}} class="fullscreen"/>
 				<div id="autoModeContent">
 					<label id="autoModeLabel" for="autoMode">
 						<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
@@ -62,8 +51,11 @@
 				</div>
 				<button type="submit" name="submit" value="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">START</button>
 			</div>
-		</div>
-		-->
+		</div> 
+		{{/parks}}
+		
+		</script>
+
 	</body>
 	
 	<script src="phonegap.js"></script>
