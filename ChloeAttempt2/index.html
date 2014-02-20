@@ -1,0 +1,68 @@
+
+<html lang="en">
+	<head>
+		<title>TreeID</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
+	
+
+	</head>
+	<body>
+		<script id="allparks-template" type="x-handlebars-template">	
+		<div id="splashpage" data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>TreeID Audio Tour</center>
+			</div>
+
+			<div id="splashcontent" data-role="content">
+				<h3>Choose a park:</h3>
+				<ul id="dyn_content" data-role="listview">
+					<!-- dynamically update	park list	 -->
+
+					  {{#parks}}
+				      	<li><a href=#{{toLowerCase name}} data-transition="slide">{{name}}</a></li>
+				      {{/parks}}
+				    
+				 </ul>
+			</div>
+		</div>
+
+
+		{{#parks}}
+		<div id={{toLowerCase name}} data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>{{name}} Park</center>
+				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back
+				</a>
+			</div>
+			<div data-role="content">
+				<img src={{imageURL}} class="fullscreen"/>
+				<div id="autoModeContent">
+					<label id="autoModeLabel" for="autoMode">
+						<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
+					</label>
+					<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="c" data-inline="false">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</div>
+				<button type="submit" name="submit" value="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false">START</button>
+			</div>
+		</div> 
+		{{/parks}}
+		
+		</script>
+
+	</body>
+	
+	<script src="phonegap.js"></script>
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.1.min.js"></script>
+	<script src="js/handlebars-v1.3.0.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/main.js"></script> 
+
+</html>
