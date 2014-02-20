@@ -108,9 +108,8 @@
     document.getElementById('audio_position').innerHTML = position;
   }
 
-  
-  // device APIs are available
+  // device APIs are available, however, needs to be placed further behind to allow API to run first
   //
   function onDeviceReady() {
-    playAudio(getAbsolutePath('audio/ping.mp3'));
+    playAudio(getAbsolutePath('audio/bird.mp3'));
   }
