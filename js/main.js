@@ -30,20 +30,20 @@ var app = {
 
       //ensures that the elements li in the unordered list get jquery formatting
       
-      $.each(json.parks, function(i) {
-          alert(json.parks[i].name);
-          // alert('good');
+      // $.each(json.parks, function(i) {
+      //     alert(json.parks[i].name);
+      //     // alert('good');
           
-          //sets the pagename correctly (trimming and removing spaces)
-          var pagename = json.parks[i].name.toLowerCase().replace(/\s/g, '');
+      //     //sets the pagename correctly (trimming and removing spaces)
+      //     var pagename = json.parks[i].name.toLowerCase().replace(/\s/g, '');
           
-          //creates a new page for each park
-          //$('#'+pagename).trigger('pagecreate')
-          //doesn't seem necessary after all
-      }); 
+      //     //creates a new page for each park
+      //     //$('#'+pagename).trigger('pagecreate')
+      //     //doesn't seem necessary after all
+      // }); 
 
       
-      $.mobile.changePage('#splashpage', {
+      $.mobile.changePage('#splash', {
           
       });
 

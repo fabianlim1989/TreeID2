@@ -17,7 +17,7 @@
 		<!-- ORIGINAL PAGE -->
 		<script id="allparks-template" type="x-handlebars-template">
 		<!-- THIS is rendered after x-handlebars-template. -->
-		<div id="splashpage" data-role="page">
+		<div id="splash" data-role="page">
 			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
 				<center>TreeID Audio Tour</center>
@@ -26,7 +26,7 @@
 				<h3>Choose a park:</h3>
 				<ul data-role="listview">
 					  {{#parks}}
-					  <li><a href=#{{toLowerCase name}}>{{name}}</a></li>
+					  <li><a href=#{{toLowerCase name}} data-transition='slide'>{{name}}</a></li>
 				      {{/parks}}
 				</ul>
 			</div>
@@ -38,7 +38,7 @@
 			<div data-role="header" data-theme="c">
 				<h1>My PGH Parks</h1>
 				<center>{{name}} Park</center>
-				<a href="#splash" data-icon="back" data-rel="back" data-direction="reverse">Back
+				<a href="#splash" data-direction="reverse" data-transition="slide" data-icon="back">Back
 				</a>
 			</div>
 			<div data-role="content">
