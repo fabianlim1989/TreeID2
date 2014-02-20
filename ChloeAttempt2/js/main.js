@@ -10,44 +10,37 @@ var app = {
 
   renderSplashView: function() {  
 
-    alert('after placeholder');
-
-
-
-
-    //retrieve json from external json file
-    // $.getJSON ('./data/parks.json', function (json) {
-      
-    //   alert('gotthisjson');
-    //   // alert(json.parks[0].name);
-
-
-    //   var src = $('#centerContainer-template').html(),
-      
-    //   template = Handlebars.compile(src),
-    //   data = template(json),
-    //   html = $('#dyn_content').html(data);
-    //   $('ul').listview('refresh');
-
-      
-
-    // })
+    //alert('after placeholder');
 
     $.getJSON ('./data/parks.json', function (json) {
       
       // alert('gotthisjson');
+
+      //takes allparks-template as the source template
       var src = $('#allparks-template').html(),
       
+      //compiles it to make it a template
       template = Handlebars.compile(src),
+
+      //puts the json data (parks data) into the template
       data = template(json),
+
+      //'unloads' all this stuff into the <body> tag
       html = $('body').html(data);
+
+      //ensures that the elements li in the unordered list get jquery formatting
       $('ul').listview('refresh');
       
       $.each(json.parks, function(i) {
-          alert(json.parks[i].name);
-          alert('good');
+          // alert(json.parks[i].name);
+          // alert('good');
+          
+          //sets the pagename correctly (trimming and removing spaces)
           var pagename = json.parks[i].name.toLowerCase().replace(/\s/g, '');
-          $('#'+pagename).trigger('pagecreate')
+          
+          //creates a new page for each park
+          //$('#'+pagename).trigger('pagecreate')
+          //doesn't seem necessary after all
       }); 
     })    
 
@@ -55,7 +48,7 @@ var app = {
   },   
 
   initialize: function() {  
-    alert('BeforeInitialize');
+    // alert('BeforeInitialize');
     var self = this;  
     this.renderSplashView();  
 
