@@ -1,0 +1,107 @@
+
+<html lang="en">
+	<head>
+		<title>TreeID</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
+		<script src="phonegap.js"></script>
+		<script src="js/jquery-1.11.0.min.js"></script>
+		<script src="js/jquery.mobile-1.4.1.min.js"></script>
+		<script src="js/handlebars-v1.3.0.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js/main.js"></script> 
+
+	</head>
+	<body>
+		<!-- ORIGINAL PAGE -->
+		<script id="allparks-template" type="x-handlebars-template">
+		<!-- THIS is rendered after x-handlebars-template. -->
+		<div id="splash" data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>TreeID Audio Tour</center>
+			</div>
+			<div id="splashcontent" data-role="content">
+				<h3>Choose a park:</h3>
+				<ul data-role="listview">
+					  {{#parks}}
+					  <li><a href=#{{toLowerCase name}} data-transition='slide' data-direction='back' onClick="setPark('{{toLowerCase name}}');">{{name}}</a></li>
+				      {{/parks}}
+				</ul>
+			</div>
+
+		</div>
+
+		{{#parks}}
+		<div id={{toLowerCase name}} data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>{{name}} Park</center>
+				<a href="#splash" data-direction="reverse" data-transition="slide" data-icon="back">Back
+				</a>
+			</div>
+			<div data-role="content">
+				<img src={{imageURL}} class="fullscreen"/>
+				<div id="autoModeContent">
+					<label id="autoModeLabel" for="autoMode">
+						<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
+					</label>
+					<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="c" data-inline="false">
+						<option value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</div>
+				<button type="submit" name="submit" value="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false" onClick=goToNext()>START</button>
+			</div>
+		</div> 
+		{{/parks}}
+		
+		<div id="treehome" data-role="page">
+			<div data-role="header" data-theme="c">
+				{{#parks}}
+				<h1>My PGH Parks</h1>
+				{{/parks}}
+				<center>All Trees</center>
+				<a onClick=goBack() data-direction="reverse" data-transition="slide" data-icon="back">Back
+				</a>
+			</div>
+			<div id="treecontent" data-role="content">
+				<h3>Choose a tree:</h3>
+				<ul data-role="listview">
+					  {{#trees}}
+					  <li><a href=#{{toLowerCase name}} data-transition='slide'>{{name}}</a></li>
+				      {{/trees}}
+				</ul>
+			</div>
+		</div>
+
+		{{#trees}}
+		<div id={{toLowerCase name}} data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>{{name}}</center>
+				<a href="#splash" data-direction="reverse" data-transition="slide" data-icon="back">Back
+				</a>
+			</div>
+			<div data-role="content">
+				my name is {{name}}
+			</div>
+		</div> 
+
+		{{/trees}}
+		</script>
+
+		<!-- <div id="splashpage" data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>My PGH Parks</h1>
+				<center>TreeID Audio Tour</center>
+			</div> 
+
+
+		</div> -->
+	</body>
+	
+
+
+</html>

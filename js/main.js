@@ -12,7 +12,7 @@ var app = {
 
     //alert('after placeholder');
     
-    $.getJSON ('./data/parks.json', function (json) {
+    $.getJSON ('./data/data.json', function (json) {
       
       // alert('gotthisjson');
 
@@ -63,7 +63,8 @@ function onDeviceReady() {
 function onBackKeyDown() {
   stopAudio();
   if(window.history.length){
-    window.history.back(); 
+    console.log(window.history);
+    window.history.back();  
   }
 }
 

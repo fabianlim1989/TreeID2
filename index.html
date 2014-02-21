@@ -7,9 +7,11 @@
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
 	</head>
 	<body>
-		<!-- TREE PAGE -->
+		<!-- Start of body  -->
 		<script id="allparks-template" type="x-handlebars-template">
-			<!-- THIS is rendered after x-handlebars-template. -->
+			<!-- //This is rendered after x-handlebars-template. -->
+
+			<!-- //start of splash page  -->
 			<div id="splash" data-role="page">
 				<div data-role="header" data-theme="a">
 					<h1>My PGH Parks</h1>
@@ -24,7 +26,9 @@
 					</ul>
 				</div>
 			</div>
+			<!-- //end of splash page  -->
 
+			<!-- //start of intro to XXX park page  -->
 			{{#parks}}
 			<div id="{{toLowerCase name}}" data-role="page">
 				<div data-role="header" data-theme="a">
@@ -37,18 +41,27 @@
 					<img src="{{imageURL}}" class="fullscreen"/>
 					<div id="autoModeContent">
 						<label id="autoModeLabel" for="autoMode">
-							<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
+							<a href="" id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
 						</label>
 						<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="a" data-inline="false">
 							<option value="off">Off</option>
 							<option value="on">On</option>
 						</select>
 					</div>
-					<button type="submit" name="submit" value="submit" data-theme="a" class="ui-btn-hidden" aria-disabled="false" onClick="goToNext();">START</button>
+					<a href="#treehome" data-transition='slide' data-role="button" data-theme="a">
+					START
+					</a>
 				</div>
 			</div> 
 			{{/parks}}
-			
+			<!-- //end of intro to XXX park page  -->
+
+			<!-- -->
+			<div>
+
+			</div>
+
+			<!-- //start of treehome page  -->
 			<div id="treehome" data-role="page">
 				<div data-role="header" data-theme="a">
 					<h1>My PGH Parks</h1>
@@ -65,33 +78,36 @@
 					</ul>
 				</div>
 			</div>
+			<!-- //end of treehome page  -->
 
+			<!-- //start of XXX tree page  -->
 			{{#trees}}
-			<div id="{{toLowerCase name}}" data-role="page">
+			<div id="{{toLowerCase name}}" data-role="page" onunload="">
 				<div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
 					<h1>My PGH Parks</h1>
 					<center>{{name}}</center>
-					<a href="#treehome" data-direction="reverse" data-transition="slide" data-icon="back" onclick="stopAudio();">Back
+					<a href="#treehome" data-direction="reverse" data-transition="slide" data-icon="back">Back
 					</a>
 				</div>
 				<div class="treeNameImg" data-role="content">
 					<div class="treeImageDisplay">
 						Hi, my name is <b><i>{{name}}</b></i> and I look like this:
-						<img src="img/green-tree.jpg" class="fullscreen" />
+						<img src="{{imageURL.[0]}}" class="fullscreen" />
 					</div>
 					<div class="transcript">
-						a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog.
+						{{desc}}
 					</div>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter">
-						<a href="#" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'));">Play MP3 Audio</a>
+						<a href="#" onclick="playAudio(getAbsolutePath('{{audioURL}}'));">Play MP3 Audio</a>
 				        <a href="#" onclick="pauseAudio();">Pause Playing Audio</a>
 				        <a href="#" onclick="stopAudio();">Stop Playing Audio</a>
-				        <!-- <p id="audio_position"></p> -->
+				        <!-- // <p id="audio_position"></p>-->
 					</div>	
 				</div>
 			</div> 
-
 			{{/trees}}
+			<!-- //end of XXX tree page  -->
+
 		</script>
 		<script src="phonegap.js"></script>
 		<script src="js/jquery-1.11.0.min.js"></script>
