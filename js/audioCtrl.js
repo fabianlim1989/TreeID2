@@ -9,6 +9,7 @@
   //
   var my_media = null;
   var mediaTimer = null;
+  var isPlaying = false;
 
   //change only this var to toggle debug mode
   //
@@ -27,6 +28,7 @@
 
       // Play audio
       my_media.play();
+      isPlaying = true;
 
       // Update my_media position every second
       if (mediaTimer == null) {
@@ -54,6 +56,7 @@
   function pauseAudio() {
     if (my_media) {
       my_media.pause();
+      isPlaying = false;
     }
     if(debugMode){
       console.log("audioPaused");
@@ -67,6 +70,7 @@
       my_media.stop();
       my_media.release();
       my_media = null;
+      isPlaying = false;
     }
     clearInterval(mediaTimer);
     mediaTimer = null;
@@ -78,6 +82,7 @@
     if(my_media){
       my_media.release();
       my_media = null;
+      isPlaying = false;
     }
     console.log("playAudio():Audio Success");
     if(debugMode){
@@ -93,6 +98,7 @@
     if (my_media) {
       my_media.release();
       my_media = null;
+      isPlaying = false;
     }
   }
 
@@ -100,4 +106,12 @@
   //
   function setAudioPosition(position) {
     document.getElementById('audio_position').innerHTML = position;
+  }
+
+  function togglePlayPause(src){
+    if(isPlaying){
+      pauseAudio();
+    }else{
+      playAudio(src);
+    }
   }
