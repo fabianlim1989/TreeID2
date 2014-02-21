@@ -4737,3 +4737,11 @@ img.fullscreen{
 #parkList{
 	height:90%;
 }
+
+.treeImageDisplay{
+	width: 100%;
+}
+.treeImageDisplay img{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

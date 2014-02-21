@@ -11,7 +11,7 @@
 		<script id="allparks-template" type="x-handlebars-template">
 			<!-- THIS is rendered after x-handlebars-template. -->
 			<div id="splash" data-role="page">
-				<div data-role="header" data-theme="c">
+				<div data-role="header" data-theme="a">
 					<h1>My PGH Parks</h1>
 					<center>TreeID Audio Tour</center>
 				</div>
@@ -27,7 +27,7 @@
 
 			{{#parks}}
 			<div id="{{toLowerCase name}}" data-role="page">
-				<div data-role="header" data-theme="c">
+				<div data-role="header" data-theme="a">
 					<h1>My PGH Parks</h1>
 					<center>{{name}} Park</center>
 					<a href="#splash" data-direction="reverse" data-transition="slide" data-icon="back">Back
@@ -39,18 +39,18 @@
 						<label id="autoModeLabel" for="autoMode">
 							<a id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
 						</label>
-						<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="c" data-inline="false">
+						<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="a" data-inline="false">
 							<option value="off">Off</option>
 							<option value="on">On</option>
 						</select>
 					</div>
-					<button type="submit" name="submit" value="submit" data-theme="c" class="ui-btn-hidden" aria-disabled="false" onClick="goToNext();">START</button>
+					<button type="submit" name="submit" value="submit" data-theme="a" class="ui-btn-hidden" aria-disabled="false" onClick="goToNext();">START</button>
 				</div>
 			</div> 
 			{{/parks}}
 			
 			<div id="treehome" data-role="page">
-				<div data-role="header" data-theme="c">
+				<div data-role="header" data-theme="a">
 					<h1>My PGH Parks</h1>
 					<center>All Trees</center>
 					<a onClick="goBack();" data-direction="reverse" data-transition="slide" data-icon="back">Back
@@ -68,27 +68,26 @@
 
 			{{#trees}}
 			<div id="{{toLowerCase name}}" data-role="page">
-				<div data-role="header" data-theme="c">
+				<div data-role="header" data-theme="a" data-position="fixed">
 					<h1>My PGH Parks</h1>
 					<center>{{name}}</center>
-					<a href="#splash" data-direction="reverse" data-transition="slide" data-icon="back">Back
+					<a href="#treehome" data-direction="reverse" data-transition="slide" data-icon="back">Back
 					</a>
 				</div>
-				<div data-role="content">
-					<div>My name is <b><i>{{name}}</b></i> and I look like:</div>
+				<div class="treeNameImg" data-role="content">
 					<div class="treeImageDisplay">
+						Hi, my name is <b><i>{{name}}</b></i> and I look like this:
 						<img src="img/green-tree.jpg" class="fullscreen" />
 					</div>
 					<div class="transcript">
-						TRANSCRIPT HERE!!
+						a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog.
 					</div>
-					<div data-role="footer" data-pos class="audioControl">
-					AUDIO HERE
-					<a href="#" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'));">Play MP3 Audio</a>
-			        <a href="#" onclick="pauseAudio();">Pause Playing Audio</a>
-			        <a href="#" onclick="stopAudio();">Stop Playing Audio</a>
-			        <p id="audio_position"></p>
-					</div>
+					<div data-role="footer" data-position="fixed" class="audioFooter">
+						<a href="#" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'));">Play MP3 Audio</a>
+				        <a href="#" onclick="pauseAudio();">Pause Playing Audio</a>
+				        <a href="#" onclick="stopAudio();">Stop Playing Audio</a>
+				        <p id="audio_position"></p>
+					</div>	
 				</div>
 			</div> 
 
