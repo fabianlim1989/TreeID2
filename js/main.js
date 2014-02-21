@@ -54,7 +54,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //
 function onDeviceReady() {
   app.initialize();
-  $('#treehome').on("pagechange", function () {
+  $(document).on("pagechange", function () {
     console.log("pagechange");
     stopAudio();
   });
