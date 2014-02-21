@@ -62,7 +62,9 @@ function onDeviceReady() {
 //
 function onBackKeyDown() {
   stopAudio();
-  window.history.back()
+  if(window.history){
+    window.history.back()  
+  }
 }
 
 // app.initialize();  
