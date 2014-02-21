@@ -4748,11 +4748,9 @@ img.fullscreen{
 
 .audioFooter{
 	text-align: center;
-	max-height: 50px;
+	max-height: 55px;
 }
 .audioFooter a img{
-	height: 40%;
-}
-.audioFooter a{
-	max-height: 45px;
+	height: 25px;
+	width: 50px;
 }
