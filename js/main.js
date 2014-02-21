@@ -61,7 +61,7 @@ function onDeviceReady() {
 // Handle the back button
 //
 function onBackKeyDown() {
-  stopAudio();
+  //stopAudio();
 }
 
 // app.initialize();  

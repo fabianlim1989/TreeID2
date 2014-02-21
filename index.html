@@ -79,14 +79,14 @@
 						Hi, my name is <b><i>{{name}}</b></i> and I look like this:
 						<img src="img/green-tree.jpg" class="fullscreen" />
 					</div>
-					<div class="transcript">
+					<div class="transcript" onUnload="stopAudio();">
 						a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog.
 					</div>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter">
 						<a href="#" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'));">Play MP3 Audio</a>
 				        <a href="#" onclick="pauseAudio();">Pause Playing Audio</a>
 				        <a href="#" onclick="stopAudio();">Stop Playing Audio</a>
-				        <p id="audio_position"></p>
+				        <!-- <p id="audio_position"></p> -->
 					</div>	
 				</div>
 			</div> 
