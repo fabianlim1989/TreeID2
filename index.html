@@ -21,7 +21,7 @@
 					<h3>Choose a park:</h3>
 					<ul data-role="listview">
 						  {{#parks}}
-						  <li><a href="#{{toLowerCase name}}" data-transition="slide"onClick="setPark('{{toLowerCase name}}');">{{name}} Park</a></li>
+						  <li><a href="#{{toLowerCase name}}" data-transition="slide">{{name}} Park</a></li>
 					      {{/parks}}
 					</ul>
 				</div>
@@ -41,14 +41,14 @@
 					<img src="{{imageURL}}" class="fullscreen"/>
 					<div id="autoModeContent">
 						<label id="autoModeLabel" for="autoMode">
-							<a href="" id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
+							<a href="#" id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
 						</label>
 						<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="a" data-inline="false">
 							<option value="off">Off</option>
 							<option value="on">On</option>
 						</select>
 					</div>
-					<a href="#treehome" data-transition='slide' data-role="button" data-theme="a">
+					<a href="#treehome" data-transition="slide" data-role="button" data-theme="a">
 					START
 					</a>
 				</div>
@@ -73,7 +73,7 @@
 					<h3>Choose a tree:</h3>
 					<ul data-role="listview">
 						  {{#trees}}
-						  <li><a href="#{{toLowerCase name}}" data-transition='slide'>{{name}}</a></li>
+						  <li><a href="#{{toLowerCase name}}" data-transition="slide">{{name}}</a></li>
 					      {{/trees}}
 					</ul>
 				</div>
