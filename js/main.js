@@ -48,5 +48,20 @@ $(document).on("mobileinit",function() {
     $.mobile.autoInitializePage = false;
 }); 
 
-document.addEventListener("deviceready", app.initialize(), false);
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// device APIs are available, however, needs to be placed further behind to allow API to run first
+//
+function onDeviceReady() {
+  app.initialize();
+  document.addEventListener("backbutton", onBackKeyDown, false);
+  playAudio(getAbsolutePath('audio/bird.mp3')); 
+}
+
+// Handle the back button
+//
+function onBackKeyDown() {
+  stopAudio();
+}
+
 // app.initialize();  

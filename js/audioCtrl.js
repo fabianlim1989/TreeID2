@@ -14,12 +14,6 @@
   //
   var debugMode = false;
 
-  // Set audio position
-  //
-  function setAudioPosition(position) {
-    document.getElementById('audio_position').innerHTML = position;
-  }
-
   // Play audio
   //
   function playAudio(src) {
@@ -27,7 +21,7 @@
     if(my_media == null){
       my_media = new Media(src, onMediaSuccess, onMediaError);
       if(debugMode){
-        alert("src: "+src);
+        console.log("src: "+src);
       }
     } 
 
@@ -62,7 +56,7 @@
       my_media.pause();
     }
     if(debugMode){
-      alert("audioPaused");
+      console.log("audioPaused");
     }
   }
 
@@ -87,14 +81,14 @@
     }
     console.log("playAudio():Audio Success");
     if(debugMode){
-      alert("Success & released");
+      console.log("Success & released");
     }
   }
 
   // onError Callback
   //
   function onMediaError(error) {
-    alert('code: '    + error.code    + '\n' +
+    console.log('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
     if (my_media) {
       my_media.release();
@@ -102,14 +96,8 @@
     }
   }
 
-  // Set audio position
+  // Set audio position, not shown in our Tree app
   //
   function setAudioPosition(position) {
     document.getElementById('audio_position').innerHTML = position;
-  }
-
-  // device APIs are available, however, needs to be placed further behind to allow API to run first
-  //
-  function onDeviceReady() {
-    playAudio(getAbsolutePath('audio/bird.mp3'));
   }
