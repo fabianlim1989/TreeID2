@@ -62,8 +62,8 @@ function onDeviceReady() {
 //
 function onBackKeyDown() {
   stopAudio();
-  if(window.history){
-    window.history.back()  
+  if(window.history.length){
+    window.history.back(); 
   }
 }
 
