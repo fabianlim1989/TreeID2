@@ -4745,3 +4745,7 @@ img.fullscreen{
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+
+.audioFooter{
+	text-align: center;
+}

@@ -54,7 +54,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //
 function onDeviceReady() {
   app.initialize();
-  document.addEventListener("backbutton", onBackKeyDown, false);
+  $(document).on("pagechange", function () {
+    console.log("page changed");
+    stopAudio();
+  });
+  //document.addEventListener("backbutton", onBackKeyDown, false);
   playAudio(getAbsolutePath('audio/bird.mp3')); 
 }
 

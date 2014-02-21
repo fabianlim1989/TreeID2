@@ -94,7 +94,7 @@
   //
   function onMediaError(error) {
     console.log('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');
+                'message: ' + error.message + '\n');
     if (my_media) {
       my_media.release();
       my_media = null;
@@ -111,9 +111,9 @@
   function togglePlayPause(src){
     if(isPlaying){
       pauseAudio();
-      document.getElementById('playOrPause').innerHTML = "Play";
+      document.getElementById('playOrPause').innerHTML = "<b>Play</b>";
     }else{
       playAudio(src);
-      document.getElementById('playOrPause').innerHTML = "Pause";
+      document.getElementById('playOrPause').innerHTML = "<i>Pause</i>";
     }
   }

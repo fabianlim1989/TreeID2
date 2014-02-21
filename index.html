@@ -82,7 +82,7 @@
 
 			<!-- //start of XXX tree page  -->
 			{{#trees}}
-			<div id="{{toLowerCase name}}" data-role="page" onunload="">
+			<div id="{{toLowerCase name}}" data-role="page">
 				<div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
 					<h1>My PGH Parks</h1>
 					<center>{{name}}</center>
@@ -91,7 +91,7 @@
 				</div>
 				<div class="treeNameImg" data-role="content">
 					<div class="treeImageDisplay">
-						Hi! My name&rsquo;s <b><i>{{name}}</b></i> &amp; I look like this:
+						Hi! My name&rsquo;s <b><i>{{name}}</b></i> &amp; I look like this:<br/>
 						<img src="{{imageURL.[0]}}" class="fullscreen" />
 					</div>
 					<div class="transcript">
@@ -99,8 +99,8 @@
 					</div>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter">
 						<a href="#" id="playOrPause" onclick="togglePlayPause(getAbsolutePath('audio/blackberryGentle.mp3'));">Play</a>
-				        <a href="#" onclick="stopAudio();">Stop</a>
-				        <!-- // <p id="audio_position"></p>-->
+				        <!-- //<a href="#" onclick="stopAudio();">Stop</a>-->
+				        <!-- //to show seconds of audio <p id="audio_position"></p>-->
 					</div>	
 				</div>
 			</div> 
