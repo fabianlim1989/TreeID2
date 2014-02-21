@@ -37,7 +37,7 @@ var app = {
   },   
 
   initialize: function() {  
-    alert('BeforeInitialize');
+    console.log('BeforeInitialize'); // instead of alert()
     var self = this;  
     this.renderSplashView();  
 

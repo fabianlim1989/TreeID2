@@ -68,7 +68,7 @@
 
 			{{#trees}}
 			<div id="{{toLowerCase name}}" data-role="page">
-				<div data-role="header" data-theme="a" data-position="fixed">
+				<div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
 					<h1>My PGH Parks</h1>
 					<center>{{name}}</center>
 					<a href="#treehome" data-direction="reverse" data-transition="slide" data-icon="back">Back
@@ -82,7 +82,7 @@
 					<div class="transcript">
 						a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog a quick brown fox jumps over the lazy dog.
 					</div>
-					<div data-role="footer" data-position="fixed" class="audioFooter">
+					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter">
 						<a href="#" onclick="playAudio(getAbsolutePath('audio/blackberryGentle.mp3'));">Play MP3 Audio</a>
 				        <a href="#" onclick="pauseAudio();">Pause Playing Audio</a>
 				        <a href="#" onclick="stopAudio();">Stop Playing Audio</a>
