@@ -54,10 +54,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //
 function onDeviceReady() {
   app.initialize();
-  /*$(document).on("pagebeforechange", function () {
-    console.log("pagebeforechange");
+  $('#treehome').on("pagechange", function () {
+    console.log("pagechange");
     stopAudio();
-  });*/
+  });
   playAudio(getAbsolutePath('audio/bird.mp3')); 
 }
 
