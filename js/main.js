@@ -58,18 +58,7 @@ function onDeviceReady() {
     console.log("page changed");
     stopAudio();
   });
-  //document.addEventListener("backbutton", onBackKeyDown, false);
   playAudio(getAbsolutePath('audio/bird.mp3')); 
-}
-
-// Handle the back button
-//
-function onBackKeyDown() {
-  stopAudio();
-  if(window.history.length){
-    console.log(window.history);
-    window.history.back();  
-  }
 }
 
 // app.initialize();  

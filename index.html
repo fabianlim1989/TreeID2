@@ -21,7 +21,7 @@
 					<h3>Choose a park:</h3>
 					<ul data-role="listview">
 						  {{#parks}}
-						  <li><a href="#{{toLowerCase name}}" data-transition='slide' data-direction='back' onClick="setPark('{{toLowerCase name}}');">{{name}}</a></li>
+						  <li><a href="#{{toLowerCase name}}" data-transition='slide' data-direction='back' onClick="setPark('{{toLowerCase name}}');">{{name}} Park</a></li>
 					      {{/parks}}
 					</ul>
 				</div>
@@ -98,7 +98,9 @@
 						{{desc}}
 					</div>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter">
-						<a href="#" id="playOrPause" onclick="togglePlayPause(getAbsolutePath('audio/blackberryGentle.mp3'));">Play</a>
+						<a href="#" onclick="togglePlayPause(getAbsolutePath('audio/blackberryGentle.mp3'));">
+							<img src="img/playpausebtn.png" />
+						</a>
 				        <!-- //<a href="#" onclick="stopAudio();">Stop</a>-->
 				        <!-- //to show seconds of audio <p id="audio_position"></p>-->
 					</div>	
