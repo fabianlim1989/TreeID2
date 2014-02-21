@@ -111,7 +111,9 @@
   function togglePlayPause(src){
     if(isPlaying){
       pauseAudio();
+      document.getElementById('playOrPause').innerHTML = "Play";
     }else{
       playAudio(src);
+      document.getElementById('playOrPause').innerHTML = "Pause";
     }
   }
