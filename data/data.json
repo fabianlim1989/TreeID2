@@ -21,8 +21,8 @@
       {
         "name":"Black Cherry",
         "sciName":"Prunus serotina",
-        "lat":"40.437931",
-        "long":"-79.946747",
+        "latitude":"40.437931",
+        "longitude":"-79.946747",
         "elev":"248",
         "imageURL":["img/blackcherry.jpg","img/blackcherry2.jpg"],
         "audioURL":"audio/blackcherry.mp3",
@@ -31,8 +31,8 @@
       {
         "name":"Eastern Hemlock",
         "sciName":"Tsuga canadensis",
-        "lat":"40.438442",
-        "long":"-79.946205",
+        "latitude":"40.438442",
+        "longitude":"-79.946205",
         "elev":"250",
         "imageURL":["img/easternhemlock.jpg","img/easternhemlock2.jpg"],
         "audioURL":"audio/easternhemlock.mp3",
@@ -41,8 +41,8 @@
       {
         "name":"Hackberry",
         "sciName":"Celtis occidentalis",
-        "lat":"40.438168",
-        "long":"-79.946243",
+        "latitude":"40.438168",
+        "longitude":"-79.946243",
         "elev":"244",
         "imageURL":["img/hackberry.jpg","img/hackberry2.jpg"],
         "audioURL":"audio/hackberry.mp3",
@@ -51,8 +51,8 @@
       {
         "name":"Red Oak",
         "sciName":"Quercus rubra",
-        "lat":"40.43837",
-        "long":"-79.945946",
+        "latitude":"40.43837",
+        "longitude":"-79.945946",
         "elev":"258",
         "imageURL":["img/redoak.jpg","img/redoak2.jpg"],
         "audioURL":"audio/redoak.mp3",
@@ -61,22 +61,32 @@
       {
         "name":"Tulip Poplar",
         "sciName":"Liriodendron tulipifera",
-        "lat":"40.438271",
-        "long":"-79.946037",
+        "latitude":"40.438271",
+        "longitude":"-79.946037",
         "elev":"240",
         "imageURL":["img/tulippoplar.jpg","img/tulippoplar2.jpg","img/tulippoplar3.jpg"],
         "audioURL":"audio/tulippoplar.mp3",
-        "desc":"Liriodendron tulipifera - known as the tulip tree, American tulip tree, tuliptree, tulip poplar, whitewood, fiddle-tree, and yellow poplar - is the Western Hemisphere representative of the two-species genus Liriodendron, and the tallest eastern hardwood. It is native to eastern North America from Southern Ontario and Illinois eastward across southern New England and south to central Florida and Louisiana. It can grow to more than 50 m (165 feet) in virgin cove forests of the Appalachian Mountains, often with no limbs until it reaches 25-30 m (80-100 feet) in height, making it a very valuable timber tree. It is fast-growing, without the common problems of weak wood strength and short lifespan often seen in fast-growing species. April marks the start of the flowering period in the southern USA (except as noted below); trees at the northern limit of cultivation begin to flower in June. The flowers are pale green or yellow (rarely white), with an orange band on the tepals; they yield large quantities of nectar. The tulip tree is the state tree of Indiana, Kentucky, and Tennessee."
+        "desc":"Liriodendron tulipifera - known as the tulip tree, American tulip tree, tuliptree, tulip poplar, whitewood, fiddle-tree, and yellow poplar - is the Western Hemisphere representative of the two-species genus Liriodendron, and the tallest eastern hardwood. It is native to eastern North America from Southern Ontario and Illinois eastward across southern New England and south to central Florida and Louisiana. It can grow to more than 50 m (165 feet) in virgin cove forests of the Appalachian Mountains, often with no limbs until it reaches 25�30 m (80�100 feet) in height, making it a very valuable timber tree. It is fast-growing, without the common problems of weak wood strength and short lifespan often seen in fast-growing species. April marks the start of the flowering period in the southern USA (except as noted below); trees at the northern limit of cultivation begin to flower in June. The flowers are pale green or yellow (rarely white), with an orange band on the tepals; they yield large quantities of nectar. The tulip tree is the state tree of Indiana, Kentucky, and Tennessee."
       },
       {
         "name":"White Oak",
         "sciName":"Quercus alba",
-        "lat":"40.438007",
-        "long":"-79.946648",
+        "latitude":"40.438007",
+        "longitude":"-79.946648",
         "elev":"251",
         "imageURL":["img/whiteoak.jpg","img/whiteoak2.jpg","img/whiteoak3.jpg"],
         "audioURL":"audio/whiteoak.mp3",
         "desc":"Quercus alba, the white oak, is one of the pre-eminent hardwoods of eastern North America. It is a long-lived oak of the family Fagaceae, native to eastern North America and found from southern Quebec west to eastern Minnesota and south to northern Florida and eastern Texas. Specimens have been documented to be over 450 years old.[2]\nAlthough called a white oak, it is very unusual to find an individual specimen with white bark; the usual color is a light gray. In the forest it can reach a magnificent height and in the open it develops into a massive broad-topped tree with large branches striking out at wide angles.[3]"
+      },
+      {
+        "name":"Ellsworth Tree (fake)",
+        "sciName":"whatever",
+        "latitude":"40.44987120626686",
+        "longitude":"-79.94996274328956",
+        "elev":"240",
+        "imageURL":["img/ellsworth.jpg"],
+        "audioURL":"audio/ping.mp3",
+        "desc":"Ellsworth is a borough in Washington County, Pennsylvania, United States."
       }
     ]
 }

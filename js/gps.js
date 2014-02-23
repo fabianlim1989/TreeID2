@@ -23,11 +23,12 @@ function onGPSSuccess(position) {
                 'Altitude: '           + position.coords.altitude              + '<br />' +
                 'Accuracy: '           + position.coords.accuracy              + '<br />' +
                 'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-                'Heading: '            + position.coords.heading               + '<br />' +
-                'Speed: '              + position.coords.speed                 + '<br />' +
+                //'Heading: '            + position.coords.heading               + '<br />' +
+                //'Speed: '              + position.coords.speed                 + '<br />' +
                 'Timestamp: '          + position.timestamp                    + '<br />';
   element.innerHTML = info;
   console.log(info);
+  searchNearbyTree(position);
 }
 
 // onGPSError Callback receives a PositionError object
@@ -51,3 +52,4 @@ function stopLocBased(){
   }
   element.innerHTML = "Stopped! <br/> Click \'START WALKING!\' to begin...";
 }
+

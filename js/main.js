@@ -1,3 +1,4 @@
+var parsedJSON = null;
 var app = {  
   
   showAlert: function (message, title) {  
@@ -22,6 +23,9 @@ var app = {
       //compiles it to make it a template
       template = Handlebars.compile(src);
 
+      //for use later
+      parsedJSON = json;
+
       //puts the json data (parks data) into the template
       data = template(json);
 
@@ -31,7 +35,6 @@ var app = {
       $.mobile.changePage('#splash', {
           
       });
-
     })    
     
   },   
@@ -43,12 +46,20 @@ var app = {
 
   }  
 };
+// app.initialize();
+// end of app
 
 $(document).on("mobileinit",function() {
     $.mobile.autoInitializePage = false;
 }); 
 
-document.addEventListener("deviceready", onDeviceReady, false);
+// Handle the menu button
+//
+function onMenuKeyDown() {
+  $.mobile.changePage('#setting', {
+          
+  });
+}
 
 // device APIs are available, however, needs to be placed further behind to allow API to run first
 //
@@ -59,17 +70,37 @@ function onDeviceReady() {
     console.log("pagechange");
     stopAudio();
   });
-  // Register the event listener
+  
   document.addEventListener("menubutton", onMenuKeyDown, false);
-  watchGPS();
 }
 
-// Handle the menu button
-//
-function onMenuKeyDown() {
-  $.mobile.changePage('#setting', {
-          
-  });
-}
+document.addEventListener("deviceready", onDeviceReady, false);
 
-// app.initialize();
+function searchNearbyTree(position){
+  /*var info =    'Latitude: '           + position.coords.latitude              + '<br />' +
+                'Longitude: '          + position.coords.longitude             + '<br />' +
+                'Altitude: '           + position.coords.altitude              + '<br />' +
+                'Accuracy: '           + position.coords.accuracy              + '<br />' +
+                'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+                'Heading: '            + position.coords.heading               + '<br />' +
+                'Speed: '              + position.coords.speed                 + '<br />' +
+                'Timestamp: '          + position.timestamp                    + '<br />';
+  */
+  console.log(parsedJSON);
+  var userPos = new LatLon(position.coords.latitude, position.coords.longitude);
+  var result = "";
+  for (var i = parsedJSON.trees.length - 1; i >= 0; i--) {
+    var point = new LatLon(parsedJSON.trees[i].latitude, parsedJSON.trees[i].longitude);
+    var distKM = userPos.distanceTo(point);   // in km
+    var distMILES = (distKM/1.60934); // in miles
+    console.log("distMILES: "+distMILES);
+    if(distMILES <= 0.2){
+      console.log(parsedJSON.trees[i].name + " is nearby");
+      result += parsedJSON.trees[i].name + " is nearby.<br/>";
+    }
+  };
+
+  var element = document.getElementById('locbasedresult');
+  element.innerHTML = result;
+
+}

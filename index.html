@@ -53,15 +53,14 @@
 					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
 				<div id="settingcontent" data-role="content" data-theme="a">
-					<p>The app will automatically prompt you to play the description of the nearest tree within 0.5 mile of your location. The app will continue to prompt about the next available tree&rsquo;s description automatically as you walk around the park. This allows you to have a smoother experience without having to search through the database.</p>
-					<p>Note: This mode will only work when GPS is on and when you are physically located within 0.5 mile of a tree in the park.</p>
+					<p>The app will automatically prompt you to play the description of the nearest tree within 0.2 mile of your location. The app will continue to prompt about the next available tree&rsquo;s description automatically as you walk around the park. This allows you to have a smoother experience without having to search through the database.</p>
+					<p>Note: This mode will only work when GPS is on and when you are physically located within 0.2 mile of a tree in the park.</p>
 					<p><u>Your location:</u></p>
 					<p id="geolocation">Click &#39;START WALKING!&#39; to begin...</p>
+					<p id="locbasedresult"></p>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
 						<a href="#" onclick="startLocBased();">START WALKING!</a>
 						<a href="#" onclick="stopLocBased();">STOP!</a>
-				        <!-- //<a href="#" onclick="stopAudio();">Stop</a>-->
-				        <!-- //to show seconds of audio <p id="audio_position"></p>-->
 					</div>	
 				</div>
 			</div>
@@ -106,24 +105,6 @@
 					</ul>
 				</div>
 			</div>
-
-			<div id="treehome" data-role="page">
-				<div data-role="header" data-theme="a">
-					<h1>My PGH Parks</h1>
-					<center>All Trees</center>
-					<a href="#" data-rel="back" data-direction="reverse" data-transition="slide" data-icon="back">Back
-					</a>
-				</div>
-				<div id="treecontent" data-role="content">
-					<h3>Type in tree:</h3>
-					
-					<ul data-role="listview" data-filter="true" data-filter-placeholder="Search for tree by name...">
-					{{#trees}}
-					<li><a href="#{{toLowerCase name}}">{{name}}</a></li>
-					{{/trees}}
-					</ul>
-				</div>
-			</div>			
 			<!-- //end of treehome page  -->
 
 			<!-- //start of XXX tree page  -->
@@ -157,6 +138,7 @@
 
 		</script>
 		<script src="phonegap.js"></script>
+		<script src="js/gpsUtil.js"></script>
 		<script src="js/jquery-1.11.0.min.js"></script>
 		<script src="js/jquery.mobile-1.4.1.min.js"></script>
 		<script src="js/handlebars-v1.3.0.js"></script>
