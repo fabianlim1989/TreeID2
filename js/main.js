@@ -76,6 +76,7 @@ function onDeviceReady() {
     console.log("pagechange");
     stopAudio();
     stopNavigation();
+    stopLocBased();
   });  
 }
 
@@ -98,19 +99,35 @@ function searchNearbyTree(position){
   console.log(parsedJSON);
   var userPos = new LatLon(position.coords.latitude, position.coords.longitude);
   var result = "";
+
+  $('#locbasedresult').empty();
   for (var i = parsedJSON.trees.length - 1; i >= 0; i--) {
     var point = new LatLon(parsedJSON.trees[i].latitude, parsedJSON.trees[i].longitude);
     var distKM = userPos.distanceTo(point);   // in km
-    var distMILES = (distKM/1.60934); // in miles
+    var distMILES = (distKM/1.60934);         // in miles
     console.log("distMILES: "+distMILES);
-    if(distMILES <= 0.2){
+
+    if(distMILES <= 0.2){ // only keep nearby results
       console.log(parsedJSON.trees[i].name + " is nearby");
-      result += parsedJSON.trees[i].name + " is nearby.<br/>";
+      var tmp = parsedJSON.trees[i].name.toLowerCase().replace(/\s/g, '');
+      result += "<li><a href='#"
+        + tmp
+        + "' onclick=\"setChosenTree('"
+        + parsedJSON.trees[i].name
+        + "');\">" 
+        + distMILES.toFixed(3) 
+        + " miles" 
+        + " - " 
+        + parsedJSON.trees[i].name 
+        + "</a></li>";
     }
   };
-
-  var element = document.getElementById('locbasedresult');
-  element.innerHTML = result;
+  if(result.length == 0){
+    result = "No trees within 0.2 miles! <br/> Are you in Schenley Park?"
+  }
+  $('#locbasedresult').append(result);
+  $("#locbasedresult").listview("refresh");
+  result = null;
 
 }
 

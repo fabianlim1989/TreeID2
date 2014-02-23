@@ -12,7 +12,7 @@ function startLocBased() {
   if(locBasedWatchID == null){
     // Update every 5 seconds, enable high accuracy
     //
-    var options = { frequency: 5000, maximumAge: 30000, timeout: 5000, enableHighAccuracy: true };
+    var options = { frequency: 10000, maximumAge: 30000, timeout: 10000, enableHighAccuracy: true };
     locBasedElement = document.getElementById('geolocation');
     locBasedElement.innerHTML = "Loading...";
     //navigator.geolocation.getCurrentPosition(onGPSSuccess, onGPSError);
@@ -33,8 +33,8 @@ function onLocBasedGPSSuccess(position) {
                 //'Heading: '            + position.coords.heading               + '<br />' +
                 //'Speed: '              + position.coords.speed                 + '<br />' +
                 'Timestamp: '          + position.timestamp                    + '<br />';
-  locBasedElement.innerHTML = info;
-  console.log(info);
+  locBasedElement.innerHTML = "";
+  //console.log(info);
   searchNearbyTree(position);
 }
 
@@ -57,7 +57,9 @@ function stopLocBased(){
     navigator.geolocation.clearWatch(locBasedWatchID);
     locBasedWatchID = null;
   }
-  locBasedElement.innerHTML = "Stopped! <br/> Click \'START WALKING!\' to begin...";
+  if(locBasedElement != null){
+    locBasedElement.innerHTML = "Stopped! <br/> Click \'START WALKING!\' to begin...";
+  }
 }
 
 /* =============================== Navigation ============================ */
@@ -97,7 +99,7 @@ function onNavGPSSuccess(position) {
   var lat1 = parseFloat(position.coords.latitude);
   var lng1 = parseFloat(position.coords.longitude);
   
-  console.log("treeObj"+treeObj);
+  console.log("treeObj: "+treeObj);
   var lat2 = treeObj[0];
   var lng2 = treeObj[1];
   console.log("lat1+lng1"+lat1+lng1);

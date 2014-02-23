@@ -39,7 +39,7 @@
 				<div id="settingcontent" data-role="content" data-theme="a">
 					<ul data-role="listview">
 					  <li data-icon="false"><a href="#locationBased" data-transition="slide">Location-Based Mode</a></li>
-					  <li data-icon="false" onclick="alert('This feature is coming your way soon!','Coming Soon!');"><a href="#" data-transition="slide">Report a Problem</a></li>
+					  <li data-icon="false"><a href="http://www.pittsburghparks.org/contactus" data-transition="slide" data-rel="external">Report a Problem</a></li>
 					  <li data-icon="false"><a href="#splash" data-transition="slide" >Choose a Park</a></li>
 					  <li data-icon="false" onclick="alert('This feature is coming your way soon!','Coming Soon!');"><a href="#" data-transition="slide">Share</a></li>
 					  <li data-icon="false" onclick="alert('This feature is coming your way soon!','Coming Soon!');"><a href="#" data-transition="slide">About</a></li>
@@ -56,11 +56,15 @@
 					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
 				<div id="settingcontent" data-role="content" data-theme="a">
-					<p>The app will automatically prompt you to play the description of the nearest tree within 0.2 mile of your location. The app will continue to prompt about the next available tree&rsquo;s description automatically as you walk around the park. This allows you to have a smoother experience without having to search through the database.</p>
-					<p>Note: This mode will only work when GPS is on and when you are physically located within 0.2 mile of a tree in the park.</p>
-					<p><u>Your location:</u></p>
+					<div id="locbaseddesc">
+						<p>The app will automatically prompt you to play the description of the nearest tree within 0.2 mile of your location. The app will continue to prompt about the next available tree&rsquo;s description automatically as you walk around the park. This allows you to have a smoother experience without having to search through the database.</p>
+						<p>Note: This mode will only work when GPS is on and when you are physically located within 0.2 mile of a tree in the park.</p>
+					</div>
+					<p><u>Trees Near You:</u></p>
 					<p id="geolocation">Click &#39;START WALKING!&#39; to begin...</p>
-					<p id="locbasedresult"></p>
+
+					<ul id="locbasedresult" data-role="listview" data-inset="true"></ul>
+
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
 						<a href="#" onclick="startLocBased();">START WALKING!</a>
 						<a href="#" onclick="stopLocBased();" class="ui-btn-right">STOP!</a>
