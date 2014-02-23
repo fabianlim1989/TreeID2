@@ -55,9 +55,11 @@
 				<div id="settingcontent" data-role="content" data-theme="a">
 					<p>The app will automatically prompt you to play the description of the nearest tree within 0.5 mile of your location. The app will continue to prompt about the next available tree&rsquo;s description automatically as you walk around the park. This allows you to have a smoother experience without having to search through the database.</p>
 					<p>Note: This mode will only work when GPS is on and when you are physically located within 0.5 mile of a tree in the park.</p>
-					
+					<p>Your location:</p>
+					<p id="geolocation">Click &#39;START WALKING!&#39; to begin...</p>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
-						<a href="#" onclick="watchGPS();">START WALKING!</a>
+						<a href="#" onclick="startLocBased();">START WALKING!</a>
+						<a href="#" onclick="stopLocBased();">STOP!</a>
 				        <!-- //<a href="#" onclick="stopAudio();">Stop</a>-->
 				        <!-- //to show seconds of audio <p id="audio_position"></p>-->
 					</div>	
