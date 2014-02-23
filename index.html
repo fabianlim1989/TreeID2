@@ -19,7 +19,7 @@
 				</div>
 				<div id="splashcontent" data-role="content">
 					<h3>Choose a park:</h3>
-					<ul data-role="listview">
+					<ul data-role="listview" data-inset="true">
 						  {{#parks}}
 						  <li onclick="setPark('{{toLowerCase name}}');"><a href="#{{toLowerCase name}}" data-transition="slide">{{name}} Park</a></li>
 					      {{/parks}}
@@ -57,13 +57,13 @@
 					<p>Note: This mode will only work when GPS is on and when you are physically located within 0.5 mile of a tree in the park.</p>
 					
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
-						<a href="#" onclick="alert('This feature is coming your way soon!','Coming Soon!');">START WALKING!</a>
+						<a href="#" onclick="watchGPS();">START WALKING!</a>
 				        <!-- //<a href="#" onclick="stopAudio();">Stop</a>-->
 				        <!-- //to show seconds of audio <p id="audio_position"></p>-->
 					</div>	
 				</div>
 			</div>
-			<!-- //end of location-based mode page  --> 
+			<!-- //end of location-based mode page  -->
 
 			<!-- //start of intro to XXX park page  -->
 			{{#parks}}
@@ -141,6 +141,7 @@
 		<script src="js/jquery.mobile-1.4.1.min.js"></script>
 		<script src="js/handlebars-v1.3.0.js"></script>
 		<script src="js/audioCtrl.js"></script>
+		<script src="js/gps.js"></script>
 		<script src="js/custom.js"></script>
 		<script src="js/main.js"></script> 	
 	</body>
