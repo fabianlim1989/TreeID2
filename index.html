@@ -97,12 +97,23 @@
 					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
 				<div id="treecontent" data-role="content">
+					<!--
 					<h3>Choose a tree:</h3>
 					<ul data-role="listview">
 						  {{#trees}}
 						  <li><a href="#{{toLowerCase name}}" data-transition="slide">{{name}}</a></li>
 					      {{/trees}}
 					</ul>
+					-->
+					
+					<h3>Type to search for tree:</h3>
+					
+					<ul data-role="listview" data-filter="true" data-filter-placeholder="Search for tree by name...">
+					{{#trees}}
+					<li><a href="#{{toLowerCase name}}">{{name}}</a></li>
+					{{/trees}}
+					</ul>
+
 				</div>
 			</div>
 			<!-- //end of treehome page  -->
