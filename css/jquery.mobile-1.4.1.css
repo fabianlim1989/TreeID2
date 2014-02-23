@@ -4715,25 +4715,23 @@ img.fullscreen{
 	max-width:100%;
 	max-height:100%;
 }
-#autoModeLabel{
+#locatioModeLabel{
 	display: inline;
 	font-weight: bold;
 	margin-top: 0;
 }
 
-#autoModeContent{
+#locatioModeContent{
 	height:40px;
 	width: 100%;
 	text-align: center;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
-
-#autoModeInfo{
+#locatioModeInfo{
 	margin-top: 0;
 	vertical-align: top;
 }
-
 #parkList{
 	height:90%;
 }

@@ -21,36 +21,68 @@
 					<h3>Choose a park:</h3>
 					<ul data-role="listview">
 						  {{#parks}}
-						  <li><a href="#{{toLowerCase name}}" data-transition="slide">{{name}} Park</a></li>
+						  <li onclick="setPark('{{toLowerCase name}}');"><a href="#{{toLowerCase name}}" data-transition="slide">{{name}} Park</a></li>
 					      {{/parks}}
 					</ul>
 				</div>
 			</div>
 			<!-- //end of splash page  -->
 
+			<!-- //start of setting page  -->
+			<div id="setting" data-role="dialog">
+				<div data-role="header" data-theme="a">
+					<h1>Options</h1>
+				</div>
+				<div id="settingcontent" data-role="content" data-theme="a">
+					<ul data-role="listview">
+						  <li data-icon="false"><a href="#locationBased" data-transition="slide">Location-Based Mode</a></li>
+						  <li data-icon="false" onclick="alert('This feature is coming your way soon!','Coming Soon!');"><a href="#" data-transition="slide">Report a Problem</a></li>
+						  <li data-icon="false"><a href="#splash" data-transition="slide" >Choose a Park</a></li>
+						  <li data-icon="false" onclick="alert('This feature is coming your way soon!','Coming Soon!');"><a href="#" data-transition="slide">Share</a></li>
+						  <li data-icon="false" onclick="alert('This feature is coming your way soon!','Coming Soon!');"><a href="#" data-transition="slide">About</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- //end of setting page  --> 
+
+			<!-- //start of location-based mode page  -->
+			<div id="locationBased" data-role="page">
+				<div data-role="header" data-theme="a">
+					<h1>Location-Based Mode</h1>
+					<a href="#splash" data-direction="reverse" data-transition="slide" data-icon="back" data-rel="back" data-iconpos="notext"></a>
+					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
+				</div>
+				<div id="settingcontent" data-role="content" data-theme="a">
+					<p>The app will automatically prompt you to play the description of the nearest tree within 0.5 mile of your location. The app will continue to prompt about the next available tree&rsquo;s description automatically as you walk around the park. This allows you to have a smoother experience without having to search through the database.</p>
+					<p>Note: This mode will only work when GPS is on and when you are physically located within 0.5 mile of a tree in the park.</p>
+					
+					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
+						<a href="#" onclick="alert('This feature is coming your way soon!','Coming Soon!');">START WALKING!</a>
+				        <!-- //<a href="#" onclick="stopAudio();">Stop</a>-->
+				        <!-- //to show seconds of audio <p id="audio_position"></p>-->
+					</div>	
+				</div>
+			</div>
+			<!-- //end of location-based mode page  --> 
+
 			<!-- //start of intro to XXX park page  -->
 			{{#parks}}
 			<div id="{{toLowerCase name}}" data-role="page">
 				<div data-role="header" data-theme="a">
-					<h1>My PGH Parks</h1>
-					<center>{{name}} Park</center>
-					<a href="#splash" data-direction="reverse" data-transition="slide" data-icon="back" data-rel="back">Back
-					</a>
+					<h1>{{name}} Park</h1>
+					<a href="#splash" data-direction="reverse" data-transition="slide" data-icon="back" data-rel="back" data-iconpos="notext"></a>
+					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
 				<div data-role="content">
 					<img src="{{imageURL}}" class="fullscreen"/>
-					<div id="autoModeContent">
-						<label id="autoModeLabel" for="autoMode">
-							<a href="#" id="autoModeInfo" href="#" data-role="button" data-icon="info" data-inline="true">Automatic Mode</a>
-						</label>
-						<select name="autoMode" id="autoModeFlip" data-role="slider" data-mini="true" data-theme="a" data-inline="false">
-							<option value="off">Off</option>
-							<option value="on">On</option>
-						</select>
+					<div id="locationModeContent">
+						<a href="#locationBased" id="locationModeInfo" data-role="button" data-icon="info">
+							Location-Based Mode
+						</a>
+						<a href="#treehome" data-transition="slide" data-role="button" data-theme="a">
+							Find A Tree Now!
+						</a>
 					</div>
-					<a href="#treehome" data-transition="slide" data-role="button" data-theme="a">
-					START
-					</a>
 				</div>
 			</div> 
 			{{/parks}}
@@ -59,10 +91,9 @@
 			<!-- //start of treehome page  -->
 			<div id="treehome" data-role="page">
 				<div data-role="header" data-theme="a">
-					<h1>My PGH Parks</h1>
-					<center>All Trees</center>
-					<a href="#" data-rel="back" data-direction="reverse" data-transition="slide" data-icon="back">Back
-					</a>
+					<h1>All Trees</h1>
+					<a href="#" data-rel="back" data-direction="reverse" data-transition="slide" data-icon="back" data-iconpos="notext"></a>
+					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
 				<div id="treecontent" data-role="content">
 					<h3>Choose a tree:</h3>
@@ -79,10 +110,9 @@
 			{{#trees}}
 			<div id="{{toLowerCase name}}" data-role="page">
 				<div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
-					<h1>My PGH Parks</h1>
-					<center>{{name}}</center>
-					<a href="#treehome" data-direction="reverse" data-transition="slide" data-icon="back" data-rel="back">Back
-					</a>
+					<h1>{{name}}</h1>
+					<a href="#treehome" data-direction="reverse" data-transition="slide" data-icon="back" data-rel="back" data-iconpos="notext"></a>
+					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
 				<div class="treeNameImg" data-role="content" data-theme="a">
 					<div class="treeImageDisplay">
@@ -93,6 +123,7 @@
 						{{desc}}
 					</div>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
+						<div>Find me!</div>
 						<a href="#" onclick="togglePlayPause(getAbsolutePath('audio/blackberryGentle.mp3'));">
 							<img src="img/playpausebtn.png" />
 						</a>

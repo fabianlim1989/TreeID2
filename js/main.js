@@ -54,11 +54,22 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //
 function onDeviceReady() {
   app.initialize();
+  playAudio(getAbsolutePath('audio/bird.mp3'));
   $(document).on("pagechange", function () {
     console.log("pagechange");
     stopAudio();
   });
-  playAudio(getAbsolutePath('audio/bird.mp3')); 
+  // Register the event listener
+  document.addEventListener("menubutton", onMenuKeyDown, false);
+  watchGPS();
 }
 
-// app.initialize();  
+// Handle the menu button
+//
+function onMenuKeyDown() {
+  $.mobile.changePage('#setting', {
+          
+  });
+}
+
+// app.initialize();

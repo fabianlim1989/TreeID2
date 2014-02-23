@@ -12,21 +12,24 @@ Handlebars.registerHelper('retrieve', function(num) {
 });
 
 function goToNext(){
-   
-   $.mobile.changePage('#treehome', {
+   var url = "#treehome";
+   $.mobile.changePage(url, {
           
     });
 }
 
-function goBack() {
+function goBackToPark() {
     //alert(park);
-    $.mobile.changePage('#'+park, {
-          
+    var url = "#"+park;
+    $.mobile.changePage(url, {
+      dataUrl: url
     });
+    //console.log(window.history);
 }
 
 function setPark(parkName){
   park = parkName;
+  //console.log(window.history);
   // alert(parkName);
 
 }
