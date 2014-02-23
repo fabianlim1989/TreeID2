@@ -104,3 +104,28 @@ function searchNearbyTree(position){
   element.innerHTML = result;
 
 }
+
+function findDirection(lat1,lng1,lat2,lng2){
+  var map;
+  map = new GMaps({
+    el: '#map',
+    lat: lat1,
+    lng: lng1
+  });
+  map.travelRoute({
+    origin: [lat1, lng1],
+    destination: [lat2, lng2],
+    travelMode: 'walking',
+    step: function(e){
+      $('#instructions').append('<li>'+e.instructions+'</li>');
+      $('#instructions li:eq('+e.step_number+')').delay(450*e.step_number).fadeIn(200, function(){
+        map.drawPolyline({
+          path: e.path,
+          strokeColor: '#131540',
+          strokeOpacity: 0.6,
+          strokeWeight: 6
+        });  
+      });
+    }
+  });
+}

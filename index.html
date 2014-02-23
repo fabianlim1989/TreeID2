@@ -23,6 +23,7 @@
 						  {{#parks}}
 						  <li onclick="setPark('{{toLowerCase name}}');"><a href="#{{toLowerCase name}}" data-transition="slide">{{name}} Park</a></li>
 					      {{/parks}}
+					      <li><a href="#directions_map">directions</a></li>
 					</ul>
 				</div>
 			</div>
@@ -97,23 +98,12 @@
 					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
 				<div id="treecontent" data-role="content">
-					<!--
 					<h3>Choose a tree:</h3>
 					<ul data-role="listview">
 						  {{#trees}}
 						  <li><a href="#{{toLowerCase name}}" data-transition="slide">{{name}}</a></li>
 					      {{/trees}}
 					</ul>
-					-->
-					
-					<h3>Type to search for tree:</h3>
-					
-					<ul data-role="listview" data-filter="true" data-filter-placeholder="Search for tree by name...">
-					{{#trees}}
-					<li><a href="#{{toLowerCase name}}">{{name}}</a></li>
-					{{/trees}}
-					</ul>
-
 				</div>
 			</div>
 			<!-- //end of treehome page  -->
@@ -135,7 +125,7 @@
 						{{desc}}
 					</div>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
-						<div>Find me!</div>
+						<a href="#directions_map" onclick="findDirection(40.438442, -79.946205,40.448442, -79.956205);">Find me!</a>
 						<a href="#" onclick="togglePlayPause(getAbsolutePath('audio/blackberryGentle.mp3'));">
 							<img src="img/playpausebtn.png" />
 						</a>
@@ -147,15 +137,33 @@
 			{{/trees}}
 			<!-- //end of XXX tree page  -->
 
+			<!-- //start of directions_map  page  -->
+			<div id="directions_map" data-role="page">
+				<div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
+					<h1>Directions</h1>
+					<a href="#treehome" data-direction="reverse" data-transition="slide" data-icon="back" data-rel="back" data-iconpos="notext"></a>
+					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
+				</div>
+				<div data-role="content" data-theme="a">	
+					<div id="map"></div>
+					<a href="#" onclick="findDirection(40.438442, -79.946205,40.448442, -79.956205);">CHANGE MAP</a>
+				    <ul id="instructions"></ul>
+				</div>
+			</div>
+			<!-- //end of directions_map page  -->
+
 		</script>
 		<script src="phonegap.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script src="js/gpsUtil.js"></script>
 		<script src="js/jquery-1.11.0.min.js"></script>
 		<script src="js/jquery.mobile-1.4.1.min.js"></script>
 		<script src="js/handlebars-v1.3.0.js"></script>
 		<script src="js/audioCtrl.js"></script>
 		<script src="js/gps.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/gmaps.js"></script>
 		<script src="js/custom.js"></script>
-		<script src="js/main.js"></script> 	
+
 	</body>
 </html>
