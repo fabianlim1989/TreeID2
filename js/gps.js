@@ -6,7 +6,7 @@ function startLocBased() {
   if(watchID == null){
     // Update every 5 seconds, enable high accuracy
     //
-    var options = { frequency: 5000, enableHighAccuracy: true };
+    var options = { frequency: 5000, maximumAge: 30000, timeout: 5000, enableHighAccuracy: true };
     element = document.getElementById('geolocation');
     element.innerHTML = "Loading...";
     //navigator.geolocation.getCurrentPosition(onGPSSuccess, onGPSError);
