@@ -20,10 +20,12 @@
 				<div id="splashcontent" data-role="content">
 					<h3>Choose a park:</h3>
 					<ul data-role="listview" data-inset="true">
-						  {{#parks}}
+						  <!-- /*{{#parks}} 
 						  <li onclick="setPark('{{toLowerCase name}}');"><a href="#{{toLowerCase name}}" data-transition="slide">{{name}} Park</a></li>
 					      {{/parks}}
-					      <li><a href="#directions_map">directions</a></li>
+					      */-->
+					      <li onclick="setPark('schenley');"><a href="#schenley" data-transition="slide">Schenley Park</a></li>
+					      <li><a href="#" data-transition="slide" onclick="alert('More parks are on your way!');">Other Park</a></li>
 					</ul>
 				</div>
 			</div>
@@ -61,7 +63,7 @@
 					<p id="locbasedresult"></p>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
 						<a href="#" onclick="startLocBased();">START WALKING!</a>
-						<a href="#" onclick="stopLocBased();">STOP!</a>
+						<a href="#" onclick="stopLocBased();" class="ui-btn-right">STOP!</a>
 					</div>	
 				</div>
 			</div>
@@ -82,7 +84,7 @@
 							Location-Based Mode
 						</a>
 						<a href="#treehome" data-transition="slide" data-role="button" data-theme="a">
-							Find A Tree Now!
+							Search Now!
 						</a>
 					</div>
 				</div>
@@ -101,7 +103,7 @@
 					<h3>Choose a tree:</h3>
 					<ul data-role="listview">
 						  {{#trees}}
-						  <li><a href="#{{toLowerCase name}}" data-transition="slide">{{name}}</a></li>
+						  <li><a href="#{{toLowerCase name}}" data-transition="slide" onclick="setChosenTree('{{name}}');">{{name}}</a></li>
 					      {{/trees}}
 					</ul>
 				</div>
@@ -125,11 +127,11 @@
 						{{desc}}
 					</div>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
-						<a href="#directions_map" onclick="findDirection(40.438442, -79.946205,40.448442, -79.956205);">Find me!</a>
+						<a href="#directions_map" class="ui-btn-left">FIND ME!</a>
 						<a href="#" onclick="togglePlayPause(getAbsolutePath('audio/blackberryGentle.mp3'));">
 							<img src="img/playpausebtn.png" />
 						</a>
-				        <a href="#" onclick="stopAudio();">Stop</a>
+				        <a href="#" onclick="stopAudio();" class="ui-btn-right">STOP!</a>
 				        <!-- //to show seconds of audio <p id="audio_position"></p>-->
 					</div>	
 				</div>
@@ -144,10 +146,14 @@
 					<a href="#treehome" data-direction="reverse" data-transition="slide" data-icon="back" data-rel="back" data-iconpos="notext"></a>
 					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
-				<div data-role="content" data-theme="a">	
-					<div id="map"></div>
-					<a href="#" onclick="findDirection(40.438442, -79.946205,40.448442, -79.956205);">CHANGE MAP</a>
-				    <ul id="instructions"></ul>
+				<div data-role="content" data-theme="a" >
+					<div id="navigateInfo"></div>
+					<div id="routeMap" data-role="none">Click &#39;Navigate!&#39;<br/>Map refreshes every 10 seconds</div>
+				    <ul data-role="listview" data-inset="true" id="instructions"></ul>
+				</div>
+				<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
+					<a href="#" onclick="startNavigation();">NAVIGATE!</a>
+					<a href="#" onclick="stopNavigation();" class="ui-btn-right">STOP!</a>
 				</div>
 			</div>
 			<!-- //end of directions_map page  -->

@@ -1,23 +1,30 @@
-var watchID = null;
-var element = null;
+var locBasedWatchID = null;
+var locBasedElement = null;
+
+var navigateWatchID = null;
+var navigateElement = null;
+
+var treeObj = [];
+
 // device APIs are available
 //
 function startLocBased() {
-  if(watchID == null){
+  if(locBasedWatchID == null){
     // Update every 5 seconds, enable high accuracy
     //
     var options = { frequency: 5000, maximumAge: 30000, timeout: 5000, enableHighAccuracy: true };
-    element = document.getElementById('geolocation');
-    element.innerHTML = "Loading...";
+    locBasedElement = document.getElementById('geolocation');
+    locBasedElement.innerHTML = "Loading...";
     //navigator.geolocation.getCurrentPosition(onGPSSuccess, onGPSError);
-    watchID = navigator.geolocation.watchPosition(onGPSSuccess, onGPSError, options);
-    console.log("watch watchID: "+ watchID);
+    locBasedWatchID = navigator.geolocation.watchPosition(onLocBasedGPSSuccess, onLocBasedGPSError, options);
+    console.log("watch locBasedWatchID: "+ locBasedWatchID);
   }
+  
 }
 
-// onGPSSuccess Geolocation
+// onLocBasedGPSSuccess Geolocation
 //
-function onGPSSuccess(position) {
+function onLocBasedGPSSuccess(position) {
   var info =    'Latitude: '           + position.coords.latitude              + '<br />' +
                 'Longitude: '          + position.coords.longitude             + '<br />' +
                 'Altitude: '           + position.coords.altitude              + '<br />' +
@@ -26,30 +33,102 @@ function onGPSSuccess(position) {
                 //'Heading: '            + position.coords.heading               + '<br />' +
                 //'Speed: '              + position.coords.speed                 + '<br />' +
                 'Timestamp: '          + position.timestamp                    + '<br />';
-  element.innerHTML = info;
+  locBasedElement.innerHTML = info;
   console.log(info);
   searchNearbyTree(position);
 }
 
-// onGPSError Callback receives a PositionError object
+// onLocBasedGPSError Callback receives a PositionError object
 //
-function onGPSError(error) {
+function onLocBasedGPSError(error) {
   console.log('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
-  if(watchID != null){
-    console.log("clear watchID: "+ watchID);
-    navigator.geolocation.clearWatch(watchID);
-    watchID = null;
+  if(locBasedWatchID != null){
+    console.log("clear locBasedWatchID: "+ locBasedWatchID);
+    navigator.geolocation.clearWatch(locBasedWatchID);
+    locBasedWatchID = null;
   }
-  element.innerHTML = "Error retrieving GPS information. Please ensure that your device's GPS is working and try again.";
+  locBasedElement.innerHTML = "Error retrieving GPS information. Please ensure that your device's GPS is working and try again.";
 }
 
 function stopLocBased(){
-  if(watchID != null){
-    console.log("clear watchID: "+ watchID);
-    navigator.geolocation.clearWatch(watchID);
-    watchID = null;
+  if(locBasedWatchID != null){
+    console.log("clear locBasedWatchID: "+ locBasedWatchID);
+    navigator.geolocation.clearWatch(locBasedWatchID);
+    locBasedWatchID = null;
   }
-  element.innerHTML = "Stopped! <br/> Click \'START WALKING!\' to begin...";
+  locBasedElement.innerHTML = "Stopped! <br/> Click \'START WALKING!\' to begin...";
 }
 
+/* =============================== Navigation ============================ */
+
+function startNavigation() {
+  if(navigateWatchID == null){
+    // Update every 5 seconds, enable high accuracy
+    //
+    var navoptions = { frequency: 10000, maximumAge: 30000, timeout: 10000, enableHighAccuracy: true };
+    navigateElement = document.getElementById('navigateInfo');
+    navigateWatchID = navigator.geolocation.watchPosition(onNavGPSSuccess, onNavGPSError, navoptions);
+    //navigator.geolocation.getCurrentPosition(onGPSSuccess, onGPSError);
+    console.log("watch navigateWatchID: "+ navigateWatchID);
+  }
+
+}
+
+// onNavGPSSuccess Geolocation
+//
+function onNavGPSSuccess(position) {
+  
+  var info =    'Latitude: '           + position.coords.latitude              + '<br />' +
+                'Longitude: '          + position.coords.longitude             + '<br />' +
+                'Altitude: '           + position.coords.altitude              + '<br />' +
+                'Accuracy: '           + position.coords.accuracy              + '<br />' +
+                'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+                //'Heading: '            + position.coords.heading               + '<br />' +
+                //'Speed: '              + position.coords.speed                 + '<br />' +
+                'Timestamp: '          + position.timestamp                    + '<br />';
+  //navigateElement.innerHTML = info;
+  navigateElement.innerHTML = "";
+  //console.log(info);
+
+  
+  treeObj = findTreeByName(chosenTree);
+  
+  var lat1 = parseFloat(position.coords.latitude);
+  var lng1 = parseFloat(position.coords.longitude);
+  
+  console.log("treeObj"+treeObj);
+  var lat2 = treeObj[0];
+  var lng2 = treeObj[1];
+  console.log("lat1+lng1"+lat1+lng1);
+  console.log("lat2+lng2"+lat2+lng2);
+  findDirection(lat1, lng1, lat2, lng2);
+}
+
+// onNavGPSError Callback receives a PositionError object
+//
+function onNavGPSError(error) {
+  console.log('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+  if(navigateWatchID != null){
+    console.log("clear navigateWatchID: "+ navigateWatchID);
+    navigator.geolocation.clearWatch(navigateWatchID);
+    navigateWatchID = null;
+  }
+  if(navigateElement != null){
+    navigateElement.innerHTML = "Error retrieving GPS information. Please ensure that your device's GPS is working and try again.";  
+  }
+  
+}
+
+function stopNavigation(){
+  if(navigateWatchID != null){
+    console.log("clear navigateWatchID: "+ navigateWatchID);
+    navigator.geolocation.clearWatch(navigateWatchID);
+    navigateWatchID = null;
+  }
+  if(navigateElement != null){
+    navigateElement.innerHTML = "Stopped! <br/> Click \'Navigate!\' to begin...";
+    document.getElementById('instructions').innerHTML = "";
+  }
+}

@@ -1,4 +1,5 @@
 var parsedJSON = null;
+var chosenTree = "";
 var app = {  
   
   showAlert: function (message, title) {  
@@ -42,8 +43,7 @@ var app = {
   initialize: function() {  
     console.log('BeforeInitialize'); // instead of alert()
     var self = this;  
-    this.renderSplashView();  
-
+    this.renderSplashView();
   }  
 };
 // app.initialize();
@@ -65,17 +65,26 @@ function onMenuKeyDown() {
 //
 function onDeviceReady() {
   app.initialize();
-  playAudio(getAbsolutePath('audio/bird.mp3'));
+  document.addEventListener("menubutton", onMenuKeyDown, false);
+  try{
+    playAudio(getAbsolutePath('audio/bird.mp3'));
+  }
+  catch(e){
+    console.log("no Media on this device.");
+  }
   $(document).on("pagechange", function () {
     console.log("pagechange");
     stopAudio();
-  });
-  
-  document.addEventListener("menubutton", onMenuKeyDown, false);
+    stopNavigation();
+  });  
 }
 
+// Add onDeviceReady
+//
 document.addEventListener("deviceready", onDeviceReady, false);
 
+// periodically displays the location info and search results based on current location
+//
 function searchNearbyTree(position){
   /*var info =    'Latitude: '           + position.coords.latitude              + '<br />' +
                 'Longitude: '          + position.coords.longitude             + '<br />' +
@@ -105,20 +114,25 @@ function searchNearbyTree(position){
 
 }
 
+// find directions from lat1,lng1 to lat2,lng2
+//
 function findDirection(lat1,lng1,lat2,lng2){
-  var map;
+  console.log("findDirection");
+
+  var map = null;
   map = new GMaps({
-    el: '#map',
+    el: '#routeMap',
     lat: lat1,
     lng: lng1
   });
+
   map.travelRoute({
     origin: [lat1, lng1],
     destination: [lat2, lng2],
     travelMode: 'walking',
     step: function(e){
       $('#instructions').append('<li>'+e.instructions+'</li>');
-      $('#instructions li:eq('+e.step_number+')').delay(450*e.step_number).fadeIn(200, function(){
+      $('#instructions li:eq('+e.step_number+')').delay(450*e.step_number).fadeIn(100, function(){
         map.drawPolyline({
           path: e.path,
           strokeColor: '#131540',
@@ -126,6 +140,27 @@ function findDirection(lat1,lng1,lat2,lng2){
           strokeWeight: 6
         });  
       });
+      $("#instructions").listview("refresh");
     }
   });
+  console.log("End of findDirection");
+}
+
+// argument: tree name
+// returns a tree object in the JSON
+function findTreeByName(treename){
+  var coords = null;
+  for (var i = parsedJSON.trees.length - 1; i >= 0; i--) {
+    if(treename == parsedJSON.trees[i].name){
+      console.log("found: "+treename);
+      coords = new Array(parsedJSON.trees[i].latitude, parsedJSON.trees[i].longitude);
+      console.log("coords"+coords);
+    }
+  };
+  return coords;
+}
+
+function setChosenTree(treename){
+  chosenTree = treename;
+  console.log("chosenTree: " +chosenTree);
 }
