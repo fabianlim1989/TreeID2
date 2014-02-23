@@ -106,6 +106,24 @@
 					</ul>
 				</div>
 			</div>
+
+			<div id="treehome" data-role="page">
+				<div data-role="header" data-theme="a">
+					<h1>My PGH Parks</h1>
+					<center>All Trees</center>
+					<a href="#" data-rel="back" data-direction="reverse" data-transition="slide" data-icon="back">Back
+					</a>
+				</div>
+				<div id="treecontent" data-role="content">
+					<h3>Type in tree:</h3>
+					
+					<ul data-role="listview" data-filter="true" data-filter-placeholder="Search for tree by name...">
+					{{#trees}}
+					<li><a href="#{{toLowerCase name}}">{{name}}</a></li>
+					{{/trees}}
+					</ul>
+				</div>
+			</div>			
 			<!-- //end of treehome page  -->
 
 			<!-- //start of XXX tree page  -->
