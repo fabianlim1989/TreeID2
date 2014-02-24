@@ -125,10 +125,8 @@ function searchNearbyTree(position){
   if(result.length == 0){
     result = "No trees within 0.2 miles! <br/> Are you in Schenley Park?"
   }
-  $('#locbasedresult').append(result);
+  $("#locbasedresult").append(result);
   $("#locbasedresult").listview("refresh");
-  result = null;
-
 }
 
 // find directions from lat1,lng1 to lat2,lng2
