@@ -1,5 +1,18 @@
 var parsedJSON = null;
 var chosenTree = "";
+var park = 'SLA';
+
+//Handlebar helper classes
+Handlebars.registerHelper('toLowerCase', function(str) {
+  return str.toLowerCase().replace(/\s/g, '');
+});
+
+Handlebars.registerHelper('retrieve', function(num) {
+  $.getJSON ('./data/parks.json', function (json) {
+      return json.parks[num];
+    });
+});
+
 var app = {  
   
   showAlert: function (message, title) {  
@@ -66,12 +79,8 @@ function onMenuKeyDown() {
 function onDeviceReady() {
   app.initialize();
   document.addEventListener("menubutton", onMenuKeyDown, false);
-  try{
-    playAudio(getAbsolutePath('audio/bird.mp3'));
-  }
-  catch(e){
-    console.log("no Media on this device.");
-  }
+  playAudio(getAbsolutePath('audio/bird.mp3'));
+  
   $(document).on("pagechange", function () {
     console.log("pagechange");
     stopAudio();
@@ -223,4 +232,29 @@ function findTreeByName(treename){
 function setChosenTree(treename){
   chosenTree = treename;
   console.log("chosenTree: " +chosenTree);
+}
+
+
+
+function goToNext(){
+   var url = "#treehome";
+   $.mobile.changePage(url, {
+          
+    });
+}
+
+function goBackToPark() {
+    //alert(park);
+    var url = "#"+park;
+    $.mobile.changePage(url, {
+      dataUrl: url
+    });
+    //console.log(window.history);
+}
+
+function setPark(parkName){
+  park = parkName;
+  //console.log(window.history);
+  // alert(parkName);
+
 }

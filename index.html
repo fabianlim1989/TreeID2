@@ -25,7 +25,7 @@
 					      {{/parks}}
 					      */-->
 					      <li onclick="setPark('schenley');"><a href="#schenley" data-transition="slide">Schenley Park</a></li>
-					      <li><a href="#" data-transition="slide" onclick="alert('More parks are on your way!');">Other Park</a></li>
+					      <li><a href="#" data-transition="slide" onclick="alert('More parks are on your way!');">Other Parks</a></li>
 					</ul>
 				</div>
 			</div>
@@ -137,14 +137,16 @@
 				<div class="treeNameImg" data-role="content" data-theme="a">
 					<div class="treeImageDisplay">
 						Hi! My name&rsquo;s <b><i>{{name}}</b></i> &amp; I look like this:<br/>
-						<img src="{{imageURL.[0]}}" class="fullscreen" />
+						{{#imageURL}}
+						<a data-rel ="external" href="https://dl.dropboxusercontent.com/u/271177961/{{imageURL}}"><img src="{{this}}" class="fullscreen" /></a>
+						{{/imageURL}}
 					</div>
 					<div class="transcript">
 						{{desc}}
 					</div>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
 						<a href="#directions_map" class="ui-btn-left">FIND ME!</a>
-						<a href="#" onclick="togglePlayPause(getAbsolutePath('audio/blackberryGentle.mp3'));">
+						<a href="#" onclick="togglePlayPause(getAbsolutePath('{{audioURL}}'));">
 							<img src="img/playpausebtn.png" />
 						</a>
 				        <a href="#" onclick="stopAudio();" class="ui-btn-right">STOP!</a>
@@ -185,7 +187,6 @@
 		<script src="js/gps.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/gmaps.js"></script>
-		<script src="js/custom.js"></script>
 
 	</body>
 </html>

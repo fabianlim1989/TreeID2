@@ -18,9 +18,16 @@
   // Play audio
   //
   function playAudio(src) {
+
     // Create Media object from src
     if(my_media == null){
-      my_media = new Media(src, onMediaSuccess, onMediaError);
+      try{
+        my_media = new Media(src, onMediaSuccess, onMediaError);  
+      }
+      catch(e){
+        console.log("No media on this device to play: "+src);
+        return false;
+      }
       if(debugMode){
         console.log("src: "+src);
       }

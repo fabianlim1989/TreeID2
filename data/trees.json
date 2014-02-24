@@ -1,7 +1,0 @@
-[
-    {"id": "1", "name": "A-tree", "sciName": "Apple", "GPS":"41,71", "audio":"audio\\atree.mp3"},
-    {"id": "2", "name": "B-tree", "sciName": "Banana", "GPS":"42,72", "audio":"audio\\btree.mp3"},
-    {"id": "3", "name": "C-tree", "sciName": "Cherry", "GPS":"43,73", "audio":"audio\\ctree.mp3"},
-    {"id": "4", "name": "D-tree", "sciName": "Durian", "GPS":"44,74", "audio":"audio\\dtree.mp3"},
-    {"id": "5", "name": "E-tree", "sciName": "Ecorn", "GPS":"45,75", "audio":"audio\\etree.mp3"}
-]
