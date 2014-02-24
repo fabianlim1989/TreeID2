@@ -123,7 +123,7 @@ function searchNearbyTree(position){
     console.log("distMILES: "+distMILES);
 
     //Changed to 0.5 for testing
-    if(distMILES <= 0.5){ // only keep nearby results
+    if(distMILES <= 0.2){ // only keep nearby results
       console.log(parsedJSON.trees[i].name + " is nearby");
       
       var treeobj = {};
