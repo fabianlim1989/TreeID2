@@ -84,6 +84,21 @@ function onDeviceReady() {
 //
 document.addEventListener("deviceready", onDeviceReady, false);
 
+function compareTree(a, b){
+  var floata = parseFloat(a.dist);
+  var floatb = parseFloat(b.dist);
+
+  if(floata < floatb){
+    return -1;
+  }
+
+  if(floata > floatb){
+    return 1;
+  }
+
+  return 0;
+}
+
 // periodically displays the location info and search results based on current location
 //
 function searchNearbyTree(position){
@@ -99,7 +114,7 @@ function searchNearbyTree(position){
   console.log(parsedJSON);
   var userPos = new LatLon(position.coords.latitude, position.coords.longitude);
   var result = "";
-
+  var allResults = [];
   $('#locbasedresult').empty();
   for (var i = parsedJSON.trees.length - 1; i >= 0; i--) {
     var point = new LatLon(parsedJSON.trees[i].latitude, parsedJSON.trees[i].longitude);
@@ -107,24 +122,54 @@ function searchNearbyTree(position){
     var distMILES = (distKM/1.60934);         // in miles
     console.log("distMILES: "+distMILES);
 
-    if(distMILES <= 0.2){ // only keep nearby results
+    //Changed to 0.5 for testing
+    if(distMILES <= 0.5){ // only keep nearby results
       console.log(parsedJSON.trees[i].name + " is nearby");
-      var tmp = parsedJSON.trees[i].name.toLowerCase().replace(/\s/g, '');
-      result += "<li><a href='#"
+      
+      var treeobj = {};
+      treeobj.name = parsedJSON.trees[i].name;
+      treeobj.dist = distMILES.toFixed(3);
+      treeobj.audioURL = parsedJSON.trees[i].audioURL;
+
+      allResults.push(treeobj);
+
+      // var tmp = parsedJSON.trees[i].name.toLowerCase().replace(/\s/g, '');
+      // result += "<li><a href='#"
+      //   + tmp
+      //   + "' onclick=\"setChosenTree('"
+      //   + parsedJSON.trees[i].name
+      //   + "');\">" 
+      //   + distMILES.toFixed(3) 
+      //   + " miles" 
+      //   + " - " 
+      //   + parsedJSON.trees[i].name 
+      //   + "</a></li>";
+      console.log(treeobj);
+    }
+  }
+
+  allResults.sort(compareTree);
+
+  for(var i = 0; i < allResults.length; i++){
+    var tmp = allResults[i].name.toLowerCase().replace(/\s/g, '');
+    result += "<li><a href='#"
         + tmp
         + "' onclick=\"setChosenTree('"
-        + parsedJSON.trees[i].name
+        + allResults[i].name
         + "');\">" 
-        + distMILES.toFixed(3) 
+        + allResults[i].dist 
         + " miles" 
         + " - " 
-        + parsedJSON.trees[i].name 
+        + allResults[i].name 
         + "</a></li>";
-    }
-  };
+  }
+
   if(result.length == 0){
     result = "No trees within 0.2 miles! <br/> Are you in Schenley Park?"
   }
+
+  console.log(allResults);
+
   $("#locbasedresult").append(result);
   $("#locbasedresult").listview("refresh");
 }

@@ -97,6 +97,8 @@
 			<!-- //end of intro to XXX park page  -->
 
 			<!-- //start of treehome page  -->
+			
+			
 			<div id="treehome" data-role="page">
 				<div data-role="header" data-theme="a">
 					<h1>All Trees</h1>
@@ -105,13 +107,23 @@
 				</div>
 				<div id="treecontent" data-role="content">
 					<h3>Choose a tree:</h3>
+					
+					<ul data-role="listview" data-filter="true" data-filter-placeholder="Search for tree by name...">
+					{{#trees}}
+					<li><a href="#{{toLowerCase name}}" data-transition="slide" onclick="setChosenTree('{{name}}');">{{name}}</a></li>
+					{{/trees}}
+					</ul>
+					<!-- REMOVED
 					<ul data-role="listview">
 						  {{#trees}}
 						  <li><a href="#{{toLowerCase name}}" data-transition="slide" onclick="setChosenTree('{{name}}');">{{name}}</a></li>
 					      {{/trees}}
 					</ul>
+					-->
 				</div>
 			</div>
+			
+
 			<!-- //end of treehome page  -->
 
 			<!-- //start of XXX tree page  -->
