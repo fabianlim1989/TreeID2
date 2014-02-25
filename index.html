@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.1.css" />
+		<link rel="stylesheet" href="css/swipe-style.css" />
 	</head>
 	<body>
 		<!-- Start of body  -->
@@ -27,6 +28,7 @@
 					      <li onclick="setPark('schenley');"><a href="#schenley" data-transition="slide">Schenley Park</a></li>
 					      <li><a href="#" data-transition="slide" onclick="alert('More parks are on your way!');">Other Parks</a></li>
 					</ul>
+					
 				</div>
 			</div>
 			<!-- //end of splash page  -->
@@ -137,9 +139,22 @@
 				<div class="treeNameImg" data-role="content" data-theme="a">
 					<div class="treeImageDisplay">
 						Hi! My name&rsquo;s <b><i>{{name}}</b></i> &amp; I look like this:<br/>
-						{{#imageURL}}
-							<img src="{{this}}" />
-						{{/imageURL}}
+						
+					<button onclick="mySwipe['{{toLowerCase name}}'].prev()">prev</button>
+					<button onclick="mySwipe['{{toLowerCase name}}'].next()">next</button>
+			
+					<div id='{{toLowerCase name}}mySwipe' class='swipe'>
+						<div class='swipe-wrap'>
+							{{#imageURL}}
+								<div><img src={{this}} /> </div>
+							{{/imageURL}}
+					
+						</div>
+					</div>
+
+
+
+
 					</div>
 					<div class="transcript">
 						{{desc}}
@@ -182,10 +197,13 @@
 		<script src="js/gpsUtil.js"></script>
 		<script src="js/jquery-1.11.0.min.js"></script>
 		<script src="js/jquery.mobile-1.4.1.min.js"></script>
+		<script src="js/swipe.js"></script>
 		<script src="js/handlebars-v1.3.0.js"></script>
 		<script src="js/audioCtrl.js"></script>
 		<script src="js/gps.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/gmaps.js"></script>
+
+
 	</body>
 </html>

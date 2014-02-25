@@ -1,0 +1,15 @@
+<button onclick="window.mySwipe.prev()">prev</button>
+					<button onclick="window.mySwipe.next()">next</button>
+			
+					<div id='mySwipe' class='swipe'>
+						<div class='swipe-wrap'>
+							{{#trees}}
+								{{#imageURL}}
+							<div><img src={{this}} /> </div>
+								{{/imageURL}}
+							{{/trees}}
+							<!--
+							<div><img src="img/blackcherry.jpg"/></div>
+							<div><img src="img/blackcherry2.jpg"/></div> -->
+						</div>
+					</div>

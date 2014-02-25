@@ -1,7 +1,8 @@
 var parsedJSON = null;
 var chosenTree = "";
 var park = 'SLA';
-
+var mySwipe = new Array();
+console.log('this is my swipe: ' + mySwipe);
 //Handlebar helper classes
 Handlebars.registerHelper('toLowerCase', function(str) {
   return str.toLowerCase().replace(/\s/g, '');
@@ -46,11 +47,37 @@ var app = {
       //'unloads' all this stuff into the <body> tag
       html = $('body').html(data);
       
+      $.each(json.trees, function(i, tree){
+        console.log(tree.name);
+        var name = tree.name.toLowerCase().replace(/\s/g, '');
+        var elem = document.getElementById(name+'mySwipe');
+        console.log('elem for ' + name +' is ' + elem);
+        mySwipe[name] = Swipe(elem,{});
+      })
+      
+
+      // var elem = document.getElementById('mySwipe');
+      // console.log('elem is ' + elem);
+      // window.mySwipe = Swipe(elem, {
+      //   // startSlide: 4,
+      //   // auto: 3000,
+      //   // continuous: true,
+      //   // disableScroll: true,
+      //   // stopPropagation: true,
+      //   // callback: function(index, element) {},
+      //   // transitionEnd: function(index, element) {}
+      // });
+
+      
       $.mobile.changePage('#splash', {
           
       });
-    })    
-    
+    })
+    // console.log('initializing slider');
+
+    // Slider = $('#slider').Swipe().data('Swipe');  
+    // $('.next').on('click', Slider.next);  
+    // $('.prev').on('click', Slider.prev);      
   },   
 
   initialize: function() {  
@@ -65,6 +92,12 @@ var app = {
 $(document).on("mobileinit",function() {
     $.mobile.autoInitializePage = false;
 }); 
+
+$(document).ready(function(){  
+    // we add the code here  
+    console.log('document ready');
+    
+});  
 
 // Handle the menu button
 //
