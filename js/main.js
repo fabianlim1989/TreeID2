@@ -2,7 +2,7 @@ var parsedJSON = null;
 var chosenTree = "";
 var park = 'SLA';
 var mySwipe = new Array();
-console.log('this is my swipe: ' + mySwipe);
+//console.log('this is my swipe: ' + mySwipe);
 //Handlebar helper classes
 Handlebars.registerHelper('toLowerCase', function(str) {
   return str.toLowerCase().replace(/\s/g, '');
@@ -16,14 +16,6 @@ Handlebars.registerHelper('retrieve', function(num) {
 
 var app = {  
   
-  showAlert: function (message, title) {  
-    if (navigator.notification) {  
-     navigator.notification.alert(message, null, title, 'OK');  
-   } else {  
-     alert(title ? (title + ": " + message) : message);  
-   }  
-  },
-
   renderSplashView: function() {  
 
     //alert('after placeholder');
@@ -70,7 +62,6 @@ var app = {
 
       
       $.mobile.changePage('#splash', {
-          
       });
     })
     // console.log('initializing slider');
@@ -88,6 +79,14 @@ var app = {
 };
 // app.initialize();
 // end of app
+
+function showAlert(message, title) {  
+  if (navigator.notification) {  
+   navigator.notification.alert(message, null, title, 'OK');  
+ } else {  
+   alert(title ? (title + ": " + message) : message);  
+ }  
+}
 
 $(document).on("mobileinit",function() {
     $.mobile.autoInitializePage = false;
@@ -164,7 +163,6 @@ function searchNearbyTree(position){
     var distMILES = (distKM/1.60934);         // in miles
     console.log("distMILES: "+distMILES);
 
-    //Changed to 0.5 for testing
     if(distMILES <= 0.2){ // only keep nearby results
       console.log(parsedJSON.trees[i].name + " is nearby");
       
@@ -172,6 +170,7 @@ function searchNearbyTree(position){
       treeobj.name = parsedJSON.trees[i].name;
       treeobj.dist = distMILES.toFixed(3);
       treeobj.audioURL = parsedJSON.trees[i].audioURL;
+      treeobj.imageURL = parsedJSON.trees[i].imageURL;
 
       allResults.push(treeobj);
 
@@ -214,6 +213,7 @@ function searchNearbyTree(position){
 
   $("#locbasedresult").append(result);
   $("#locbasedresult").listview("refresh");
+  showAlert(allResults[0].name + " is nearby!", "Nearby!");
 }
 
 // find directions from lat1,lng1 to lat2,lng2
@@ -267,8 +267,6 @@ function setChosenTree(treename){
   console.log("chosenTree: " +chosenTree);
 }
 
-
-
 function goToNext(){
    var url = "#treehome";
    $.mobile.changePage(url, {
@@ -289,5 +287,4 @@ function setPark(parkName){
   park = parkName;
   //console.log(window.history);
   // alert(parkName);
-
 }
