@@ -2,6 +2,8 @@ var parsedJSON = null;
 var chosenTree = "";
 var park = 'SLA';
 var mySwipe = new Array();
+var pastAlerts = [];
+
 //console.log('this is my swipe: ' + mySwipe);
 //Handlebar helper classes
 Handlebars.registerHelper('toLowerCase', function(str) {
@@ -115,9 +117,15 @@ function onDeviceReady() {
   
   $(document).on("pagechange", function () {
     console.log("pagechange");
-    stopAudio();
-    stopNavigation();
-    stopLocBased();
+    if(($.mobile.activePage.attr('id'))==='locationBased'){
+      startLocBased();
+      stopAudio();
+      stopNavigation();
+    } else {
+      stopAudio();
+      stopNavigation();
+      stopLocBased();
+    }
   });  
 }
 
@@ -153,10 +161,15 @@ function searchNearbyTree(position){
                 'Timestamp: '          + position.timestamp                    + '<br />';
   */
   console.log(parsedJSON);
+
+  $('#locbasedresult').empty();
+
   var userPos = new LatLon(position.coords.latitude, position.coords.longitude);
   var result = "";
+
   var allResults = [];
-  $('#locbasedresult').empty();
+
+
   for (var i = parsedJSON.trees.length - 1; i >= 0; i--) {
     var point = new LatLon(parsedJSON.trees[i].latitude, parsedJSON.trees[i].longitude);
     var distKM = userPos.distanceTo(point);   // in km
@@ -213,7 +226,11 @@ function searchNearbyTree(position){
 
   $("#locbasedresult").append(result);
   $("#locbasedresult").listview("refresh");
-  showAlert(allResults[0].name + " is nearby!", "Nearby!");
+  if($.inArray(allResults[0].name, pastAlerts) === -1) {
+    showAlert(allResults[0].name + " is nearby!", "Nearby!");
+    pastAlerts.push(allResults[0].name);
+    console.log('new has been pushed: ' + pastAlerts[pastAlerts.length]);
+  }
 }
 
 // find directions from lat1,lng1 to lat2,lng2

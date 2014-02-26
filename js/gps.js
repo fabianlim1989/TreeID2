@@ -57,7 +57,7 @@ function stopLocBased(){
     navigator.geolocation.clearWatch(locBasedWatchID);
     locBasedWatchID = null;
   }
-  if(locBasedElement != null){
+  if(locBasedElement != null && document.referrer==='locationBased'){
     locBasedElement.innerHTML = "Stopped! <br/> Click \'START WALKING!\' to begin...";
   }
 }

@@ -50,6 +50,19 @@
 			</div>
 			<!-- //end of setting page  --> 
 
+			<!-- //start of loc based info page -->
+			<div id="locBasedInfo" data-role="dialog">
+				<div data-role="header" data-theme="a">
+					<h1>About Location-Based</h1>
+				</div>
+				<div id="settingcontent" data-role="content" data-theme="a">
+					<p>The app will automatically prompt you to play the description of the nearest tree within 0.2 mile of your location. The app will continue to prompt about the next available tree&rsquo;s description automatically as you walk around the park. This allows you to have a smoother experience without having to search through the database.</p>
+					<p>Note: This mode will only work when GPS is on and when you are physically located within 0.2 mile of a tree in the park.</p>
+				</div>
+				<a href="#locationBased" data-role="button">Got it!</a>
+			</div>
+			<!-- //end of loc based info page -->
+
 			<!-- //start of location-based mode page  -->
 			<div id="locationBased" data-role="page">
 				<div data-role="header" data-theme="a">
@@ -58,16 +71,15 @@
 					<a href="#setting" data-transition="slide" data-icon="gear" data-iconpos="notext"></a>
 				</div>
 				<div id="settingcontent" data-role="content" data-theme="a">
-					<div id="locbaseddesc">
-						<p>The app will automatically prompt you to play the description of the nearest tree within 0.2 mile of your location. The app will continue to prompt about the next available tree&rsquo;s description automatically as you walk around the park. This allows you to have a smoother experience without having to search through the database.</p>
-						<p>Note: This mode will only work when GPS is on and when you are physically located within 0.2 mile of a tree in the park.</p>
-					</div>
-					<p><u>Trees Near You:</u></p>
+					<h3>Trees Near You:</h3>
 					<p id="geolocation">Click &#39;START WALKING!&#39; to begin...</p>
 					<ul id="locbasedresult" data-role="listview" data-inset="true"></ul>
 					<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="audioFooter" data-theme="a">
+						<a href="#locBasedInfo" data-role="button" data-icon="info">About Location-Based</a>
+						<!--
 						<a href="#" onclick="startLocBased();">START WALKING!</a>
 						<a href="#" onclick="stopLocBased();" class="ui-btn-right">STOP!</a>
+						-->
 					</div>	
 				</div>
 			</div>
@@ -84,7 +96,7 @@
 				<div data-role="content">
 					<img src="{{imageURL}}" class="fullscreen"/>
 					<div id="locationModeContent">
-						<a href="#locationBased" id="locationModeInfo" data-role="button" data-icon="info">
+						<a href="#locationBased" id="locationModeInfo" data-role="button">
 							Location-Based Mode
 						</a>
 						<a href="#treehome" data-transition="slide" data-role="button" data-theme="a">
