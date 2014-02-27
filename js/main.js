@@ -121,7 +121,12 @@ function onDeviceReady() {
       startLocBased();
       stopAudio();
       stopNavigation();
-    } else {
+    } else if(($.mobile.activePage.attr('id'))==='directions_map'){
+      stopLocBased();
+      stopAudio();
+      startNavigation();
+    }  
+    else {
       stopAudio();
       stopNavigation();
       stopLocBased();
