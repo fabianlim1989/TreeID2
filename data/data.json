@@ -77,16 +77,6 @@
         "imageURL":["img/whiteoak.jpg","img/whiteoak2.jpg","img/whiteoak3.jpg"],
         "audioURL":"audio/whiteoak.mp3",
         "desc":"Quercus alba, the white oak, is one of the pre-eminent hardwoods of eastern North America. It is a long-lived oak of the family Fagaceae, native to eastern North America and found from southern Quebec west to eastern Minnesota and south to northern Florida and eastern Texas. Specimens have been documented to be over 450 years old.[2]\nAlthough called a white oak, it is very unusual to find an individual specimen with white bark; the usual color is a light gray. In the forest it can reach a magnificent height and in the open it develops into a massive broad-topped tree with large branches striking out at wide angles.[3]"
-      },
-      {
-        "name":"Ellsworth Tree (fake)",
-        "sciName":"whatever",
-        "latitude":"40.44987120626686",
-        "longitude":"-79.94996274328956",
-        "elev":"240",
-        "imageURL":["img/ellsworth.jpg"],
-        "audioURL":"audio/ping.mp3",
-        "desc":"Ellsworth is a borough in Washington County, Pennsylvania, United States."
       }
     ]
 }
